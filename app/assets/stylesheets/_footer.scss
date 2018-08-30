@@ -1,11 +1,20 @@
 
-  ul{
-    text-align: center;
-    li{
-      float: left;
-      text-align: center;
-      margin-right: 10px;
-      font-size: 12px;
-      color: #222221;
-    }
+.footer__lists{
+  text-align: center;
+  li{
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 20px;
   }
+}
+
+  // ul{
+  //   text-align: center;
+  //   li{
+  //     float: left;
+  //     text-align: center;
+  //     margin-right: 10px;
+  //     font-size: 12px;
+  //     color: #222221;
+  //   }
+  // }
