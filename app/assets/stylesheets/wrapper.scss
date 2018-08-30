@@ -2,13 +2,12 @@
   width: 100%;
   height: 100vh;
   .header{
-    height: 166px;
+    height: 200px;
     width: 100%;
     position: fixed;
     border-bottom: 2px solid;
     color: rgba(0,0,0,0.05);
     background-color:white;
-
   }
   .contents{
     background-color: #F7F9F9;
@@ -19,8 +18,20 @@
   }
   .footer{
     background-color: wihte;
-    padding: 16px 0 104px;
-    height: 197px;
+    padding: 20px 0 50px;
+    height: 100px;
     width: 100%;
+    ul{
+      margin: 0 auto;
+      li{
+        height: 20px;
+        width: 7%;
+        text-align: center;
+        float: left;
+        font-size: 11px;
+        color: #222221;
+        padding: 0 10px;
+      }
+    }
   }
 }
