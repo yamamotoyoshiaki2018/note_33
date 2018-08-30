@@ -7,11 +7,11 @@
       %ul
         .header__upper__lists
           %li
-            %form.header__upper__lists__note-botton{:action => "#", :method => "get"}
+            %form.header__upper__lists__note-botton{:action => "/post_texts/new", :method => "get"}
               %input.header__upper__lists__note-botton__submit{:type => "submit", :value => "ノートを投稿"}/
           %li
             .header__upper__lists__user-icon
-              = link_to  do
+              = link_to "#" do
                 = fa_icon ("smile 3x")
           %li
             %form.header__upper__lists__search{:action => "#", :method => "get"}
@@ -60,6 +60,7 @@
 
   .contents
     = yield
+    = render partial: 'texts'
 
 
   .footer
