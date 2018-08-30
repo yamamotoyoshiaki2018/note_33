@@ -1,0 +1,94 @@
+
+
+  <body class="ns-note bg-default" data-status="" ng-class="{'bg-white':isNotePage, 'bg-default':!isNotePage, 'preview-page':isPreview}">
+
+    <main style="">
+      <div class="header">
+        <h2 class="logo">
+          <a ng-click="goHome()">note</a>
+        </h2>
+      </div>
+
+      <div class="register-container" ng-init="init_entry()" ng-show="!submitted &amp;&amp; !guest_status">
+        <div class="register__title-container" ng-if="nourlname">
+          <p class="register__title u-mbM">noteに登録する</p>
+        </div>
+
+        <form class="space-reset ng-pristine ng-valid ng-valid-minlength" name="entry_form" ng-submit="entry_submit()">
+          <div ng-show="via != 'email'" class="">
+            <div class="form-stacked">
+              <!-- /ニックネーム -->
+              <div class="space-bottom-2">
+                ニックネーム（登録後に変更可能）
+                <input name="nickname" ng-model="$parent.nickname" placeholder="例：ノート君（任意）" tabindex="1" type="text" class="ng-pristine ng-valid ng-touched" style="">
+              </div>
+              <!-- /メールアドレス -->
+              <div class="space-bottom-2">
+                メールアドレス
+                <input name="email" ng-model="email" placeholder="例：mail@note.mu" tabindex="1" type="text" class="ng-pristine ng-valid ng-touched" style="">
+              </div>
+              <!-- /パスワード -->
+              <div class="space-bottom-2">
+                パスワード
+                <input delayed-validation="true" name="password" ng-minlength="6" ng-model="password" placeholder="例：6文字以上の半角英数" tabindex="1" type="password" class="ng-pristine ng-untouched ng-valid ng-valid-minlength">
+              </div>
+              <!-- /利用規約に同意する -->
+              <div class="txt-center space-t-1h space-b-1h">
+                <input delayed-validation="true" name="terms" ng-model="terms" tabindex="1" type="checkbox" class="ng-pristine ng-untouched ng-valid">
+                <span class="txt-xsmall"><a class="link-green" href="/terms" target="_blank">利用規約</a>に同意する
+                </span>
+              </div>
+              <!-- /登録ボタン -->
+              <button analytics-category="button" analytics-event="signup-finish" analytics-label="signup-finish-email" analytics-on="click" class="button-full button-high button-txtbig" ng-if="!auth.provider">
+                <div class="sending_msg" ng-show="!sending">
+                登録する（無料）
+                </div>
+              </button>
+            </div>
+
+            <div class="renewal-p-form ng-hide" ng-show="via == 'email'">
+              <!-- /利用規約に同意する -->
+              <div class="txt-center space-t-1h space-b-1h">
+                <input delayed-validation="true" name="terms" ng-model="terms" tabindex="1" type="checkbox" class="ng-pristine ng-untouched ng-valid">
+                <span class="txt-xsmall"><a class="link-green" href="/terms" target="_blank">利用規約</a>に同意する
+                </span>
+              </div>
+              <!-- /登録ボタン -->
+              <button analytics-category="button" analytics-event="signup-finish" analytics-label="signup-finish-nourlname-purchase" analytics-on="click" class="button-full button-high button-txtbig">
+                <div class="sending_msg" ng-show="!sending">
+                  登録する（無料）
+                </div>
+              </button>
+            </div>
+          </div>
+        </form>
+
+        <div class="signup-with-oauth" ng-if="!auth.provider &amp;&amp; via != 'email'">
+          <p class="register__sub-title">ソーシャルアカウントで登録</p>
+          <ul class="u-flexboxBasic">
+            <li>
+              <a analytics-category="button" analytics-event="twitter-signup" analytics-label="twitter-signup" analytics-on="click" class="btn btn-twitter btn-taller btn-full space-bottom-1 u-textBold" follow="$location.search().follow" from="$location.search().from" href="" likables="$location.search().likables" like="$location.search().likable_id" magazine="$location.search().magazineFollow" nkey="$location.search().nkey" note-auth-link="true" nourlname="nourlname" provider="'twitter'" redirect="$location.search().redirectPath">
+              <span class="icon-small icon-small-twitter"></span>
+              Twitter
+              </a>
+            </li>
+            <li>
+              <a analytics-category="button" analytics-event="facebook-signup" analytics-label="facebook-signup" analytics-on="click" class="btn btn-facebook btn-taller btn-full space-bottom-1 u-textBold" follow="$location.search().follow" from="$location.search().from" href="" likables="$location.search().likables" like="$location.search().likable_id" magazine="$location.search().magazineFollow" nkey="$location.search().nkey" note-auth-link="true" nourlname="nourlname" provider="'facebook'" redirect="$location.search().redirectPath">
+              <span class="icon-small icon-small-facebook"></span>
+              Facebook
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="register__login" ng-show="!auth.provider">
+          <p class="txt-center space-b-1h"><a class="link-green" href="/login">ログイン</a></p>
+          <p class="txt-center" ng-if="via != 'email'">
+          cakesアカウントをお持ちの方は<a class="link-green" href="/login">こちら</a></p>
+        </div>
+      </div>
+
+    </main>
+
+  </body>
+</html>
