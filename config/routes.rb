@@ -3,4 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root 'notes#index'
   get 'notes' => 'notes#index'
+  # get 'texts' => 'texts#index'
+  resources :post_texts, only: [:new]
+  resources :users
 end
