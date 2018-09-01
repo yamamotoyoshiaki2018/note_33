@@ -94,6 +94,9 @@
       text-align: center;
       margin-right: 10px;
     }
+    &__list:hover{
+      background-color: red;
+    }
     &__right{
       float: right;
       color: #787c7b;
