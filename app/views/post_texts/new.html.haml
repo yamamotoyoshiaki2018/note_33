@@ -1,1 +1,37 @@
-hello
+.post__text
+  .post__text__header
+    .post__text__header__center
+      = link_to  do
+        %img{:alt => "note", :src => "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg"}/
+    .post__text__header__right
+      %ul
+        %li
+          .post__text__header__right__cancel
+            %form.post__text__header__right__cancel__botton{:action => "/", :method => "get"}
+              %input.post__text__header__right__cancel__botton__submit{:type => "submit", :value => "ノートを投稿"}/
+        %li
+          .post__text__header__right__post
+            %form.post__text__header__right__post__botton{:action => "/", :method => "get"}
+              %input.post__text__header__right__post__botton__submit{:type => "submit", :value => "キャンセル"}/
+  .post__text.contents
+    .post__text.contents__center
+      .post__text.contents__center__img
+      .post__text.contents__center__title
+      .post__text.contents__center__textarea
+
+    .post__text.contents__right
+      .post__text.contents__right__box
+
+    / %ul.nav
+    /   %li
+    /     %a{:href => "#"} Home
+    /   %li
+    /     %a{:href => "#"} Strategy
+    /     %ul
+    /       %li
+    /         %a{:href => "#"} b1
+    /       %li
+    /         %a{:href => "#"} b1
+
+
+

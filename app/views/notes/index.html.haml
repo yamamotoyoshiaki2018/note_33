@@ -42,7 +42,7 @@
       .header__lower__bottom
         %ul.header__lower__bottom__lists
           %li.header__lower__bottom__list
-            = link_to "マンガ", root_path,:style=>"color:#787c7b;"
+            = link_to "マンガ", destroy_user_session_path,:style=>"color:#787c7b;", :method => :delete
           %li.header__lower__bottom__list
             = link_to "小説", root_path,:style=>"color:#787c7b;"
           %li.header__lower__bottom__list
