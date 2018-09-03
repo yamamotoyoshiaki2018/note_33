@@ -13,14 +13,17 @@
           .post__text__header__right__post
             %form.post__text__header__right__post__botton{:action => "/", :method => "get"}
               %input.post__text__header__right__post__botton__submit{:type => "submit", :value => "キャンセル"}/
-  .post__text.contents
-    .post__text.contents__center
-      .post__text.contents__center__img
-      .post__text.contents__center__title
-      .post__text.contents__center__textarea
+  .post__text__contents
+    .post__text__contents__center
+      .post__text__contents__center__img
+        = fa_icon ("image 5x")
+      .post__text__contents__center__title
+        %input.post__text__contents__center__title__text{:placeholder => "タイトルを入力", :size => "50", :type => "text"}/
+      .post__text__contents__center__textarea
+        %input.post__text__contents__center__textarea__input{:placeholder => "ノート本文", :cols => "50", :rows => "10", :type => "textarea"}/
 
-    .post__text.contents__right
-      .post__text.contents__right__box
+    .post__text__contents__right
+      .post__text__contents__right__box
 
     / %ul.nav
     /   %li
