@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   root 'notes#index'
   get 'notes' => 'notes#index'
   # get 'texts' => 'texts#index'
-  resources :post_texts, only: [:new]
+  resources :post_texts, only: [:index, :new, :create]
   resources :users
 end

@@ -13,28 +13,18 @@
           .post__text__header__right__post
             %form.post__text__header__right__post__botton{:action => "/", :method => "get"}
               %input.post__text__header__right__post__botton__submit{:type => "submit", :value => "キャンセル"}/
-  .post__text__contents
-    .post__text__contents__center
-      .post__text__contents__center__img
+
+  .post__text__contents__center
+    = form_for @post_text do |f|
+      = f.label :header_image, class: 'post__text__contents__center__img' do
         = fa_icon ("image 5x")
+        = f.file_field :header_image, class: 'post__text__contents__center__upload'
       .post__text__contents__center__title
-        %input.post__text__contents__center__title__text{:placeholder => "タイトルを入力", :size => "50", :type => "text"}/
+        = f.text_field :title, class: 'post__text__contents__center__title__text', placeholder: 'タイトルを入力'
       .post__text__contents__center__textarea
-        %input.post__text__contents__center__textarea__input{:placeholder => "ノート本文", :cols => "50", :rows => "10", :type => "textarea"}/
+        = f.text_area :text, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
 
-    .post__text__contents__right
-      .post__text__contents__right__box
-
-    / %ul.nav
-    /   %li
-    /     %a{:href => "#"} Home
-    /   %li
-    /     %a{:href => "#"} Strategy
-    /     %ul
-    /       %li
-    /         %a{:href => "#"} b1
-    /       %li
-    /         %a{:href => "#"} b1
-
+      .post__text__contents__right
+        .post__text__contents__right__box
 
 
