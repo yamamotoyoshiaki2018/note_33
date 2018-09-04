@@ -1,17 +1,30 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = "メールアドレス"
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = "パスワード"
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "ログイン"
-= render "devise/shared/links"
+#account-page.account-page
+  .account-page__inner.clearfix
+    .account-page__inner-top.account-page__header
+      %h2 note
+    .account-page__inner-bottom.user-form
+      %h4 ログイン
+      = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+        .field
+          .field-label
+            = "メールアドレス"
+          .field-input
+            = f.email_field :email, autofocus: true, autocomplete: "email"
+        .field
+          .field-label
+            = "パスワード"
+          .field-input
+            = f.password_field :password, autocomplete: "current-password"
+          - if devise_mapping.rememberable?
+            .field-label
+              = f.check_box :remember_me
+              = f.label :remember_me
+        .actions
+          = f.submit "ログイン", class: 'btn'
+      %h5
+        会員登録は
+        %a.link-green{href: "/users/sign_up"} こちら
+
+
+
+
