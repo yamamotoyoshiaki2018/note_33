@@ -1,0 +1,44 @@
+#account-edit-page.account-edit-page
+  .account-edit-page__inner.clearfix
+    .account-edit-page__inner-top.account-edit-page__header
+      %h2 アカウント設定
+      %ul.tab-menu
+        %li.tabs.current
+          %a{href: :edit}アカウント
+        %li.tabs
+          %a{href: :edit}購入履歴
+        %li.tabs
+          %a{href: :edit}カード情報
+        %li.tabs
+          %a{href: :edit}お支払い先
+    .account-edit-page__inner-bottom.user-form
+      = form_for(current_user) do |f|
+        .field
+          .field-label
+            = "ニックネーム"
+          .field-input
+            / = current_user.name
+            = f.text_field :name, autofocus: true
+        .field
+          .field-label
+            = "メールアドレス"
+          .field-input
+            = f.email_field :email
+        %h5 パスワードを変更する場合
+        .field
+          .field-label
+            = "現在のパスワード"
+          .field-input
+            = f.password_field :current_password, autocomplete: "off"
+        .field
+          .field-label
+            = "新しいパスワード"
+          .field-input
+            = f.password_field :password, autocomplete: "off"
+        .field
+          .field-label
+            = "新しいパスワード再入力"
+          .field-input
+            = f.password_field :password_confirmation, autocomplete: "off"
+        .actions
+          = f.submit "更新する", class: 'btn'
