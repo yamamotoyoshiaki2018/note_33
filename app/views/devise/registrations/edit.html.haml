@@ -17,8 +17,16 @@
           .field-label
             = "ニックネーム"
           .field-input
-            / = current_user.name
             = f.text_field :name, autofocus: true
+        .field
+          .field-label
+            = "note33_id（一度登録すると変更できません）"
+          - if current_user.note33_id?
+            .field-input
+              = current_user.note33_id
+          - else
+            .field-input
+              = f.text_field :note33_id, autofocus: true
         .field
           .field-label
             = "メールアドレス"
