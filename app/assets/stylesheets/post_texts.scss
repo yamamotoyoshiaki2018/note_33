@@ -57,29 +57,32 @@
 
 .post__text__contents{
   &__center{
-    height: 500px;
     width: 620px;
     margin-left: 400px;
     &__img{
-      height: 350px;
+      height: 200px;
       width: 100%;
       text-align: center;
-      line-height: 500px;
+      line-height: 200px;
+    }
+    &__upload{
+      display: none;
     }
     &__title{
-      height: 50px;
       &__text{
         height: 50px;
-        font-size: 30px;
         width: 100%;
+        font-size: 30px;
         border-style: none;
+
       }
     }
     &__textarea{
-      &__input{
-      height: 200px;
+      &__text{
+      height: 350px;
       width: 100%;
       border-style: none;
+      font-size: 20px;
       }
     }
   }

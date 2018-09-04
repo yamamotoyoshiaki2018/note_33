@@ -10,23 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_30_022216) do
+ActiveRecord::Schema.define(version: 20180904063410) do
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name", null: false
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "note33_id"
-    t.string "header_image"
-    t.string "avatar_image"
-    t.text "self_introduction"
-    t.string "reset_password_token"
+  create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "post_text_id"
+    t.integer  "publish_status"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.index ["post_text_id"], name: "index_notes_on_post_text_id", using: :btree
+    t.index ["user_id"], name: "index_notes_on_user_id", using: :btree
+  end
+
+  create_table "post_texts", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "header_image"
+    t.string   "title",                      null: false
+    t.text     "text",         limit: 65535
+    t.string   "image"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  create_table "users", id: :bigint, force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "name",                                              null: false
+    t.string   "email",                                default: "", null: false
+    t.string   "encrypted_password",                   default: "", null: false
+    t.string   "note33_id"
+    t.string   "header_image"
+    t.string   "avatar_image"
+    t.text     "self_introduction",      limit: 65535
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.datetime "created_at",                                        null: false
+    t.datetime "updated_at",                                        null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
