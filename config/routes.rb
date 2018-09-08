@@ -5,5 +5,10 @@ Rails.application.routes.draw do
   get 'notes' => 'notes#index'
   # get 'texts' => 'texts#index'
   resources :post_texts, only: [:index, :new, :create]
-  resources :users
+  resources :users do
+    member do
+      get 'profile'
+    end
+  end
+
 end

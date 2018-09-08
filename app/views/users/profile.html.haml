@@ -1,0 +1,33 @@
+.profile-page
+  = form_for(current_user) do |f|
+    .profile-page__header
+      .profile-page__header__image
+        - if current_user.header_image?
+          = image_tag current_user.header_image
+        %p ヘッダー画像を更新
+        .profile-page__header__image__select
+          = f.label :header_image
+        = f.file_field :header_image, style: "display:none;", multipart: true
+      .profile-page__header__contents
+        .profile-page__header__contents__left
+          .profile-page__header__contents__left__box
+            .profile-page__header__contents__left__box__image
+              - if current_user.avatar_image?
+                = image_tag current_user.avatar_image
+              %p
+                = fa_icon ("camera")
+              .profile-page__header__contents__left__box__image__select
+                = f.label :avatar_image
+              = f.file_field :avatar_image, style: "display:none;"
+        .profile-page__header__contents__right
+          .profile-page__header__contents__right__top
+            .field-input
+              = f.text_field :name, placeholder: "ニックネーム（例：ノート君）"
+          .profile-page__header__contents__right__middle
+            = f.text_area :self_introduction, placeholder: "あなたの自己紹介を書きましょう（140字以内）", maxlength: 140
+          .profile-page__header__contents__right__bottom
+            .profile-page__header__contents__right__bottom__cancel-btn
+              .cancel-btn
+                = link_to "キャンセル", user_path(current_user)
+            .profile-page__header__contents__right__bottom__submit-btn
+              = f.submit "更新する", class: 'btn'
