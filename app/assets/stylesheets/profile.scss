@@ -116,6 +116,14 @@
           padding-top: 10px;
           background-color: white;
           float: left;
+          input#user_name {
+              width: 778px;
+              padding-bottom: 10px;
+              padding-top: 10px;
+              padding-left: 10px;
+              border-radius: 3px;
+              border: 1px solid #eee;
+          }
         }
         &__middle {
           height: 145px;
@@ -126,6 +134,15 @@
           font-size: 14px;
           line-height: 24px;
           float: left;
+          textarea#user_self_introduction {
+              width: 778px;
+              height: 123px;
+              padding-bottom: 10px;
+              padding-top: 10px;
+              padding-left: 10px;
+              border-radius: 3px;
+              border: 1px solid #eee;
+          }
         }
         &__bottom {
           height: 70px;
@@ -193,49 +210,6 @@
 
 }
 
-// .profile-page__header__image label {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   height: 100%;
-//   width: 100%;
-//   // text-indent:-999px;
-//   color: rgba(246,245,245,0);
-//   content: '';
-//   cursor: pointer;
-// }
-
 .profile-page__header__contents__right__top.field-input {
     width: 750px;
 }
-
-input#user_name {
-    width: 778px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-    border-radius: 3px;
-    border: 1px solid #eee;
-}
-
-textarea#user_self_introduction {
-    width: 778px;
-    height: 123px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-    border-radius: 3px;
-    border: 1px solid #eee;
-}
-
-// .profile-page__header__image p {
-//   position: absolute;
-//   color: white;
-//   top: 50%;
-//   left: 50%;
-//   -ms-transform: translate(-50%,-50%);
-//   -webkit-transform: translate(-50%,-50%);
-//   transform: translate(-50%,-50%);
-//   margin:0;
-//   padding:0;
-// }
