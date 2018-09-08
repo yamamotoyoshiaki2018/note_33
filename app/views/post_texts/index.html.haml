@@ -15,7 +15,7 @@
                 = fa_icon ("smile 3x")
                 %ul
                   %li
-                    = link_to "マイページ", root_path,:style=>"color:white;"
+                    = link_to "マイページ", user_path(current_user),:style=>"color:white;"
                   %li
                     = link_to "ノート一覧", post_texts_path,:style=>"color:white;"
                   %li
