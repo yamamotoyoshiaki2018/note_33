@@ -1,11 +1,29 @@
-  .contents__top
-    / .contents__top__icon
-    .contents__top__nickname
-    .contents__top__date
-  .contents__center
-    .contents__center__img
-    .contents__center__title
-    .contents__center__text
-  .contents__bottom
-    .contents__bottom__left
-    .contents__bottom__right
+.contents__container
+  .contents__container__top
+    .contents__container__top__icon
+    .contents__container__top__nickname
+      / = post_text.
+    .contents__container__top__date
+      / = post_text.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .contents__container__center
+    .contents__container__center__headerimg
+      / = post_text.header_image
+    .contents__container__center__title
+      / = post_text.title
+    .contents__container__center__text
+      / = post_text.text
+    .contents__container__center__text__img
+      / = post_text.img
+    .contents__container__center__bottom
+      .contents__container__center__bottom__left
+        %ul
+          %li
+            = fa_icon ("heart 2x")
+          %li
+            = fa_icon ("arrow-right 2x")
+          %li
+            = fa_icon ("plus 2x")
+      .contents__container__center__bottom__right
+        = link_to "コメントする(削除）"
+        / , post_text_path, method => delete
+

@@ -74,19 +74,35 @@
         width: 100%;
         font-size: 30px;
         border-style: none;
-
       }
     }
     &__textarea{
       &__text{
-      height: 350px;
-      width: 100%;
-      border-style: none;
-      font-size: 20px;
+        height: 350px;
+        width: 100%;
+        border-style: none;
+        font-size: 20px;
+        &__img{
+          &__upload{
+            display: none;
+          }
+        }
+      }
+    }
+    &__submit{
+      &__botton{
+        height: 40px;
+        width: 180px;
+        margin: 0 auto;
+        background-color: $base_color;
+        border-radius: 8px;
+        line-height: 2.5em;
+        text-align: center;
+        font-size: 15px;
+        color: white;
+        float: left;
+        margin-right: 20px;
       }
     }
   }
 }
-
-
-
