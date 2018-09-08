@@ -6,5 +6,9 @@ Rails.application.routes.draw do
   resources :post_texts, only: [:index, :new, :create, :destroy, :show, :edit, :update] do
     resources :comments, only: [:create, :destroy]
   end
-  resources :users
+  resources :users do
+    member do
+      get 'profile'
+    end
+  end
 end
