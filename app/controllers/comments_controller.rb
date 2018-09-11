@@ -22,3 +22,5 @@ class CommentsController < ApplicationController
     params.permit(:text, :post_text_id)
   end
 end
+
+
