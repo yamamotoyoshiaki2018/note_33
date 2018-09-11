@@ -32,7 +32,7 @@
           float: right;
           &__top {
             &__left {
-              width: 740px;
+              width: 640px;
               font-size: 24px;
               line-height: 30px;
               padding-top: 5px;
@@ -41,14 +41,35 @@
               float: left;
             }
             &__right {
-              width: 50px;
+              width: 150px;
               font-size: 18px;
               color: gray;
-              line-height: 30px;
-              padding-top: 5px;
+              line-height: 35px;
+              // padding-top: 5px;
               padding-bottom: 5px;
               background-color: white;
               float: right;
+              &__follow-btn {
+                display: inline-block;
+                height: 32px;
+                width: 128px;
+                padding: 0 10px;
+                line-height: 32px;
+                letter-spacing: 1px;
+                font-size: 12px;
+                font-weight: bold;
+                text-align: center;
+                border-radius: 4px;
+                .follow {
+                  border: 1px solid #ddd;
+                  color: #2cb696;
+                }
+                .unfollow {
+                  border: 1px solid #2cb696;
+                  background-color: #2cb696;
+                  color: white;
+                }
+              }
             }
           }
           &__middle {
@@ -146,6 +167,7 @@
   background: white;
   text-decoration: none;
   box-sizing: border-box;
+  padding-left: 110px;
 }
 .dropdown > li:hover > a {/*layer-1*/
   color: gray;
@@ -154,10 +176,10 @@
   color: black;
   width: 190px;
   display: none;
-  margin-left: -150px;
+  margin-left: -60px;
   position: absolute;
   border: 1px solid #eee;
-  border-radius: 2px;
+  border-radius: 3px;
 }
 .dropdown > li li:hover > a {/*layer-2*/
   color: black;
