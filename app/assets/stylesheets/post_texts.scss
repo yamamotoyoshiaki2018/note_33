@@ -58,12 +58,9 @@
 .post__text__contents{
   &__center{
     width: 620px;
-    margin-left: 400px;
+    margin:100px 0 200px 400px;
     &__img{
-      height: 200px;
       width: 100%;
-      text-align: center;
-      line-height: 200px;
     }
     &__upload{
       display: none;

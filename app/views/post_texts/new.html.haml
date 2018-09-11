@@ -9,6 +9,38 @@
       = f.label :header_image, class: 'post__text__contents__center__img' do
         = fa_icon ("image 5x")
         = f.file_field :header_image, class: 'post__text__contents__center__upload'
+        = f.hidden_field :image_cache
+        %p
+          = f.check_box :remove_header_image
+          画像を削除する
+
+          <script>
+          $( '.post__text__contents__center__upload' ).change( function () {
+          var selectedFile = this.files[0];
+          // ここまではFile APIを使わない場合と同じ
+
+          // ↓"FileReader"オブジェクトを生成し変数fileReaderに格納
+          var fileReader = new FileReader();
+
+          // ↓fileReaderにファイルが読み込まれた後（ onload ）の動作を定義
+          fileReader.onload = function( event ) {
+          // ロード時の各種情報はonloadの引数（この場合はevent）に格納される
+          // ロードされた画像ファイルのData URIスキームは event.target.result に格納される
+          // ↓変数loadedImageUriに格納
+          var loadedImageUri = event.target.result;
+
+          // ↓取得した画像ファイルのData URIスキームを元に画像を表示（imgのsrcに指定するだけ！）
+          $( '.post__text__contents__center__header-image-preview' ).html( '<img src="' + loadedImageUri + '">' );
+          };
+
+          // ↓画像読み込みを実行。"FileReader"の"readAsDataURL"関数を使う
+          // 引数はユーザーが入力したファイルのオブジェクト（＝ selectedFile ＝ this.files[0]）
+          fileReader.readAsDataURL( selectedFile );
+          } );
+          </script>
+
+      .post__text__contents__center__header-image-preview
+
       .post__text__contents__center__title
         = f.text_field :title, class: 'post__text__contents__center__title__text', placeholder: 'タイトルを入力'
       .post__text__contents__center__textarea
@@ -16,6 +48,37 @@
           = fa_icon ("plus 2x")
           = fa_icon ("image 2x")
           = f.file_field :image, class: 'post__text__contents__center__textarea__text__img__upload'
+          = f.hidden_field :image_cache
+          %p
+          = f.check_box :remove_image
+          画像を削除する
+
+          <script>
+          $( '.post__text__contents__center__textarea__text__img__upload' ).change( function () {
+          var selectedFile = this.files[0];
+          // ここまではFile APIを使わない場合と同じ
+
+          // ↓"FileReader"オブジェクトを生成し変数fileReaderに格納
+          var fileReader = new FileReader();
+
+          // ↓fileReaderにファイルが読み込まれた後（ onload ）の動作を定義
+          fileReader.onload = function( event ) {
+          // ロード時の各種情報はonloadの引数（この場合はevent）に格納される
+          // ロードされた画像ファイルのData URIスキームは event.target.result に格納される
+          // ↓変数loadedImageUriに格納
+          var loadedImageUri = event.target.result;
+
+          // ↓取得した画像ファイルのData URIスキームを元に画像を表示（imgのsrcに指定するだけ！）
+          $( '.post__text__contents__center__preview' ).html( '<img src="' + loadedImageUri + '">' );
+          };
+
+          // ↓画像読み込みを実行。"FileReader"の"readAsDataURL"関数を使う
+          // 引数はユーザーが入力したファイルのオブジェクト（＝ selectedFile ＝ this.files[0]）
+          fileReader.readAsDataURL( selectedFile );
+          } );
+          </script>
+
+          .post__text__contents__center__preview
 
         = f.text_area :text, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
 
@@ -26,5 +89,6 @@
 
     .post__text__contents__right
       .post__text__contents__right__box
+
 
 
