@@ -9,24 +9,32 @@
         .mypage__header__right__top__left
           = @user.name
         .mypage__header__right__top__right
-          %ul.dropdown
-            %li
-              %a{:href => ""} ･･･
-              %ul.profile-navi
-                %li
-                  %a{:href => profile_user_path} プロフィールを編集する
-                %li
-                  %a{:href => "#"} Amazonウィジェットを追加
+          - if user_signed_in?
+            %ul.dropdown
+              %li
+                - if @user.id == current_user.id
+                  %a{:href => ""} ･･･
+                  %ul.profile-navi
+                    %li
+                      %a{:href => profile_user_path} プロフィールを編集する
+                    %li
+                      %a{:href => "#"} Amazonウィジェットを追加
+                - else
+                  .mypage__header__right__top__right__follow-btn
+                    = render 'follows/follow_btn', user: @user
+                    / = fa_icon ("user")
+                    / フォローする
+          - else
       .mypage__header__right__middle
         - if @user.self_introduction?
           = @user.self_introduction
       .mypage__header__right__bottom
         .mypage__header__right__bottom__follow-no
-          138
+          = @user.followings.count
         .mypage__header__right__bottom__follow-which
           フォロー
         .mypage__header__right__bottom__follow-no
-          10,234
+          = @user.followers.count
         .mypage__header__right__bottom__follow-which
           フォロワー
   .mypage__second-header
