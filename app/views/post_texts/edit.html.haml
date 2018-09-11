@@ -9,6 +9,28 @@
       = f.label :header_image, class: 'post__text__contents__center__img' do
         = fa_icon ("image 5x")
         = f.file_field :header_image, class: 'post__text__contents__center__upload'
+        = image_tag @post_text.header_image, size: "500x300", alt: "", id: :header_prev if @post_text.image?
+        %p
+          = f.check_box :remove_header_image
+          画像を削除する
+
+          <script type="text/javascript">
+          $(function() {
+          function readURL(input) {
+          if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+          $('#header_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+          }
+          }
+          $(".post__text__contents__center__upload").change(function(){
+          readURL(this);
+          });
+          });
+          </script>
+
       .post__text__contents__center__title
         = f.text_field :title, class: 'post__text__contents__center__title__text', placeholder: 'タイトルを入力'
       .post__text__contents__center__textarea
@@ -16,6 +38,27 @@
           = fa_icon ("plus 2x")
           = fa_icon ("image 2x")
           = f.file_field :image, class: 'post__text__contents__center__textarea__text__img__upload'
+          = image_tag @post_text.image, size: "400x300", alt: "", id: :img_prev if @post_text.image?
+          %p
+          = f.check_box :remove_image
+          画像を削除する
+
+          <script type="text/javascript">
+          $(function() {
+          function readURL(input) {
+          if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+          $('#img_prev').attr('src', e.target.result);
+          }
+          reader.readAsDataURL(input.files[0]);
+          }
+          }
+          $(".post__text__contents__center__textarea__text__img__upload").change(function(){
+          readURL(this);
+          });
+          });
+          </script>
 
         = f.text_area :text, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
 
@@ -26,3 +69,5 @@
 
     .post__text__contents__right
       .post__text__contents__right__box
+
+

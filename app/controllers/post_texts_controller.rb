@@ -9,7 +9,15 @@ class PostTextsController < ApplicationController
   end
 
   def create
-    PostText.create(header_image: note_params[:header_image], image: note_params[:image], title: note_params[:title], text: note_params[:text], user_id: current_user.id)
+    PostText.create(
+      header_image: note_params[:header_image],
+      image: note_params[:image],
+      title: note_params[:title],
+      text: note_params[:text],
+      remove_header_image: note_params[:remove_header_image],
+      remove_image: note_params[:remove_image],
+      image_cache: note_params[:image_cache],
+      user_id: current_user.id)
     redirect_to post_texts_path
     # redirect_to root_path
   end
@@ -42,9 +50,18 @@ class PostTextsController < ApplicationController
 
   private
   def note_params
-    params.require(:post_text).permit(:header_image, :image, :title, :text)
+    params.require(:post_text).permit(
+      :header_image,
+      :image,
+      :title,
+      :text,
+      :remove_header_image,
+      :remove_image,
+      :image_cache
+      )
   end
 end
+
 
 
 
