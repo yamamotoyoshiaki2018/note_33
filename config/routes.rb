@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   end
   resources :users do
     member do
-      get 'profile', :followings, :followers
+      get 'profile'
+      get :followings, :followers
     end
   end
   resources :follows, only: [:create, :destroy]

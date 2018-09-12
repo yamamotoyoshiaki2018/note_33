@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      redirect_to root_path
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -25,9 +25,9 @@ class UsersController < ApplicationController
     @note33_id = @user.note33_id
   end
 
-  def following
+  def followings
     @user  = User.find(params[:id])
-    @users = @user.following
+    @users = @user.followings
   end
 
   def followers

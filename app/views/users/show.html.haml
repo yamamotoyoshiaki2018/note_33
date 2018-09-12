@@ -1,29 +1,30 @@
-#mypage.mypage.pageDisplay
+.mypage.pageDisplay
   .mypage__header
     .mypage__header__left
       .mypage__header__left__image
         - if @user.avatar_image?
           = image_tag @user.avatar_image
+        - else
+          %p
+            = fa_icon ("smile 6x")
     .mypage__header__right
       .mypage__header__right__top
         .mypage__header__right__top__left
           = @user.name
         .mypage__header__right__top__right
           - if user_signed_in?
-            %ul.dropdown
-              %li
-                - if @user.id == current_user.id
-                  %a{:href => ""} ･･･
-                  %ul.profile-navi
-                    %li
-                      %a{:href => profile_user_path} プロフィールを編集する
-                    %li
-                      %a{:href => "#"} Amazonウィジェットを追加
-                - else
-                  .mypage__header__right__top__right__follow-btn
-                    = render 'follows/follow_btn', user: @user
-                    / = fa_icon ("user")
-                    / フォローする
+            - if @user.id == current_user.id
+              .dropdown
+                %button#dropdownMenu1.btn.btn-default.btn-sm.dropdown-toggle{"aria-expanded" => "true", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                  ･･･
+                %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1"}
+                  %li
+                    %a{href: profile_user_path} プロフィールを編集する
+                  %li
+                    %a{:href => ""} Amazonウィジェットを追加
+            - else
+              .mypage__header__right__top__right__follow-btn
+                = render 'follows/follow_btn', user: @user
           - else
       .mypage__header__right__middle
         - if @user.self_introduction?
@@ -32,15 +33,63 @@
         .mypage__header__right__bottom__follow-no
           = @user.followings.count
         .mypage__header__right__bottom__follow-which
-          フォロー
+          %a.link-green{"data-target" => "#follow-modal", "data-toggle" => "modal"}フォロー
         .mypage__header__right__bottom__follow-no
           = @user.followers.count
         .mypage__header__right__bottom__follow-which
-          フォロワー
+          %a.link-green{"data-target" => "#followers-modal", "data-toggle" => "modal"}フォロワー
   .mypage__second-header
     %ul.tab-menu
       %li.tabs.current
         %a{href: user_path}ホーム
       %li.tabs
         %a{href: user_path}マガジン
-  .mypage__body
+  #follow-modal.modal.fade{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title フォロー
+        .modal-body
+          - @user.followings.each do |user|
+            .user-list
+              .user-list__avatar
+                - if user.avatar_image?
+                  = image_tag user.avatar_image
+                - else
+                  %p
+                    = fa_icon ("smile 5x")
+              .user-list__name-and-id
+                .user-list__name-and-id__name
+                  = link_to user.name, user_path(user), class: "link-green"
+                .user-list__name-and-id__note33id
+                  = user.note33_id
+              .mypage__header__right__top__right__follow-btn
+                - if user_signed_in?
+                  = render 'follows/follow_btn_sm', user: user
+  #followers-modal.modal.fade{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title フォロワー
+        .modal-body
+          - @user.followers.each do |user|
+            .user-list
+              .user-list__avatar
+                - if user.avatar_image?
+                  = image_tag user.avatar_image
+                - else
+                  %p
+                    = fa_icon ("smile 5x")
+              .user-list__name-and-id
+                .user-list__name-and-id__name
+                  = link_to user.name, user_path(user), class: "link-green"
+                .user-list__name-and-id__note33id
+                  = user.note33_id
+              .mypage__header__right__top__right__follow-btn
+                - if user_signed_in?
+                  = render 'follows/follow_btn_sm', user: user
+
+
+
