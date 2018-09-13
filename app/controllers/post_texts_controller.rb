@@ -1,6 +1,8 @@
 class PostTextsController < ApplicationController
 
   def index
+    @like = Like.all
+    @post_text = PostText.new
     @post_texts = PostText.includes(:user).order("created_at DESC")
   end
 

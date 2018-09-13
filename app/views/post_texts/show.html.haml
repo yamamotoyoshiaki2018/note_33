@@ -51,7 +51,7 @@
           = @post_text.title
         .contents__container__center__text
           - if @post_text.text.present?
-            = @post_text.text
+            = simple_format(@post_text.text)
         .contents__container__center__img
           - if @post_text.image.present?
             = image_tag @post_text.image, size: "470x300", alt: "" , :class =>".contents__container__center__img__2nd"

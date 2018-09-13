@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :notes, only: [:index]
   resources :post_texts, only: [:index, :new, :create, :destroy, :show, :edit, :update] do
     resources :comments, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy]
   end
   resources :users do
     member do
@@ -13,3 +14,6 @@ Rails.application.routes.draw do
   end
   resources :follows, only: [:create, :destroy]
 end
+
+
+

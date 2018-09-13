@@ -70,8 +70,17 @@
         margin-right: 20px;
       }
       &__left{
-        line-height: 60px;
-
+        // line-height: 50px;
+        padding-top: 8px;
+        #delete-like-button{
+          color: red;
+          border-style: none;
+          background-color: #F7F9F9;
+        }
+        #like-button{
+          border-style: none;
+          background-color: #F7F9F9;
+        }
       }
       &__right{
         float: right;
@@ -138,7 +147,7 @@
         border-right: 5px solid #fff;
         }
         &__icon{
-          line-height: 50px;
+          // line-height: 5px;
         }
       }
     }

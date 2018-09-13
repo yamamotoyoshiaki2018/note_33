@@ -15,7 +15,7 @@
                 = fa_icon ("smile 3x")
                 %ul
                   %li
-                    = link_to "マイページ", root_path,:style=>"color:white;"
+                    = link_to "マイページ", user_path(current_user),:style=>"color:white;"
                   %li
                     = link_to "ノート一覧", post_texts_path,:style=>"color:white;"
                   %li
@@ -73,6 +73,7 @@
 
   .contents
     - @post_texts.each do |post_text|
+      / = render partial: "content", locals: { post_text: post_text, like: @like }
       .contents__container
         .contents__container__top
           .contents__container__top__icon
@@ -98,8 +99,9 @@
           .contents__container__center__bottom
             .contents__container__center__bottom__left
               %ul
-                %li
-                  = fa_icon ("heart 2x")
+                %li#function_like
+                  = render partial: "post_texts/like", locals: { post_text: post_text, like: @like }
+
                 %li
                   = fa_icon ("arrow-right 2x")
                 %li
