@@ -1,17 +1,18 @@
 .mypage {
+    height: 50px;
     width: 100%;
-    background-color: #fff;
+    background-color: #white;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Hiragino Kaku Gothic ProN, "ヒラギノ角ゴ ProN W3", Arial, "メイリオ", Meiryo, sans-serif;
     &__header {
-      height: 100px;
+      height: 131px;
       width: 940px;
       margin: 0 auto;
       background-color: white;
-      padding-top: 50px;
-      padding-bottom: 50px;
+      padding-top: 30px;
+      // padding-bottom: 50px;
       border-bottom: 1px solid #ddd;
         &__left {
-          height: 100%;
+          height: 100px;
           width: 150px;
           float: left;
           &__image {
@@ -26,7 +27,7 @@
           }
         }
         &__right {
-          height: 100%;
+          height: 100px;
           width: 790px;
           background-color: white;
           float: right;
@@ -42,11 +43,10 @@
             }
             &__right {
               width: 150px;
-              font-size: 18px;
-              color: gray;
-              line-height: 35px;
-              // padding-top: 5px;
-              padding-bottom: 5px;
+              height: 40px;
+              padding-top: 6px;
+              padding-bottom: 6px;
+              padding-right: 10px;
               background-color: white;
               float: right;
               &__follow-btn {
@@ -102,7 +102,7 @@
         }
     }
     &__second-header {
-      height: 63px;
+      height: 60px;
       width: 840px;
       margin: 0 auto;
       background-color: white;
@@ -152,45 +152,117 @@
     }
 }
 
-.dropdown {
-  overflow: hidden;
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
+.mypage__header__right__top__right .dropdown .btn-sm {
+  border: none;
+  float: right;
 }
-.dropdown li {
-  list-style: none;
-}
-.dropdown li a {
-  display: block;
-  color: gray;
-  background: white;
-  text-decoration: none;
-  box-sizing: border-box;
-  padding-left: 110px;
-}
-.dropdown > li:hover > a {/*layer-1*/
-  color: gray;
-}
-.dropdown li ul {
-  color: black;
-  width: 190px;
-  display: none;
-  margin-left: -60px;
-  position: absolute;
-  border: 1px solid #eee;
+.mypage__header__right__top__right .dropdown .dropdown-menu {
+  font-size: 12px;
+  color: #dddddd;
+  margin-left: -100px;
   border-radius: 3px;
 }
-.dropdown > li li:hover > a {/*layer-2*/
-  color: black;
-  background: #f7f9f9;
+
+#follow-modal .user-list, #followers-modal .user-list {
+  margin-top: 15px;
+  height: 81px;
+  width: 568px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  &__avatar {
+    width: 80px;
+    height: 80px;
+    float: left;
+    background-color: white;
+    img {
+      height: 80px;
+      width: 80px;
+      border: none;
+      border-radius: 40px;
+      background-color: #f7f9f9;
+    }
+  }
+  &__name-and-id {
+    width: 330px;
+    height: 80px;
+    float: left;
+    &__name {
+      width: 330px;
+      height: 40px;
+      float: left;
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: white;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    &__note33id {
+      width: 330px;
+      height: 40px;
+      float: left;
+      padding-left: 10px;
+      padding-right: 10px;
+      background-color: white;
+      font-size: 16px;
+      color: gray;
+    }
+  }
 }
-.dropdown li ul li a {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  padding-left: 15px;
-  font-size: 12px;
-  line-height: 16px;
-  width: 190px;
-  height: 40px;
+
+.user-list__avatar p {
+  height: 80px;
+  width: 80px;
+  color: #249f80;
+  text-align: center;
 }
+
+.mypage__header__left__image p {
+  height: 100px;
+  width: 100px;
+  color: #249f80;
+  text-align: center;
+}
+
+// bootstrap使わない場合
+// .dropdown {
+//   overflow: hidden;
+//   margin: 0 auto;
+//   padding: 0;
+//   display: flex;
+// }
+// .dropdown li {
+//   list-style: none;
+// }
+// .dropdown li a {
+//   display: block;
+//   color: gray;
+//   background: white;
+//   text-decoration: none;
+//   box-sizing: border-box;
+//   padding-left: 110px;
+// }
+// .dropdown > li:hover > a {/*layer-1*/
+//   color: gray;
+// }
+// .dropdown li ul {
+//   color: black;
+//   width: 190px;
+//   display: none;
+//   margin-left: -60px;
+//   position: absolute;
+//   border: 1px solid #eee;
+//   border-radius: 3px;
+// }
+// .dropdown > li li:hover > a {/*layer-2*/
+//   color: black;
+//   background: #f7f9f9;
+// }
+// .dropdown li ul li a {
+//   padding-top: 12px;
+//   padding-bottom: 12px;
+//   padding-left: 15px;
+//   font-size: 12px;
+//   line-height: 16px;
+//   width: 190px;
+//   height: 40px;
+// }
