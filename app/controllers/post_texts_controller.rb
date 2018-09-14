@@ -1,7 +1,12 @@
 class PostTextsController < ApplicationController
 
   def index
-    @post_texts = PostText.includes(:user).order("created_at DESC")
+    # @post_texts = PostText.includes(:user).order("created_at DESC")
+    if params[:tag]
+      @post_texts = PostText.tagged_with(params[:tag]).order("created_at DESC")
+    else
+      @post_texts = PostText.includes(:user).order("created_at DESC")
+    end
   end
 
   def new
@@ -9,7 +14,7 @@ class PostTextsController < ApplicationController
   end
 
   def create
-    PostText.create(
+    @post_text = PostText.new(
       header_image: note_params[:header_image],
       image: note_params[:image],
       title: note_params[:title],
@@ -18,6 +23,8 @@ class PostTextsController < ApplicationController
       remove_image: note_params[:remove_image],
       image_cache: note_params[:image_cache],
       user_id: current_user.id)
+    @post_text.tag_list.add(note_params[:tag_list], parse: true)
+    @post_text.save
     redirect_to post_texts_path
     # redirect_to root_path
   end
@@ -57,7 +64,8 @@ class PostTextsController < ApplicationController
       :text,
       :remove_header_image,
       :remove_image,
-      :image_cache
+      :image_cache,
+      :tag_list
       )
   end
 end

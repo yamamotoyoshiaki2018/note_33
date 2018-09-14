@@ -79,11 +79,14 @@
       .contents__container
         .contents__container__top
           .contents__container__top__icon
-            = fa_icon ("smile 2x")
+            - if post_text.user.avatar_image?
+              = image_tag post_text.user.avatar_image
+            - else
+              = fa_icon ("smile 2x")
           %ul
             %li
               .contents__container__top__nickname
-                = post_text.user.name
+                = link_to post_text.user.name, user_path(post_text.user), class: "link-green"
               .contents__container__top__date
                 = post_text.created_at.strftime("%Y年%m月%d日 %H時%M分")
         .contents__container__center
@@ -98,6 +101,8 @@
           .contents__container__center__img
             - if post_text.image.present?
               = image_tag post_text.image, size: "", alt: "" , :class =>".contents__container__center__img__2nd"
+          .contents__container__center__tags
+            = render 'post_texts/tag_list', tag_list: post_text.tag_list
           .contents__container__center__bottom
             .contents__container__center__bottom__left
               %ul

@@ -13,4 +13,8 @@ Rails.application.routes.draw do
     end
   end
   resources :follows, only: [:create, :destroy]
+
+  get 'tags/:tag', to: 'post_texts#index', as: :tag
+  resources :post_texts
+  root to: 'post_texts#index'
 end
