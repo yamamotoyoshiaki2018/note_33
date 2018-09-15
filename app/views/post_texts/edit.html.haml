@@ -66,7 +66,7 @@
         %br/
         = f.text_field :tag_list, value: @post_text.tag_list.join(','), "data-role": "tagsinput", class: "form-control", placeholder: "半角スペース区切りで入力"
       .post__text__contents__center__submit
-        = f.submit "投稿する", class: 'post__text__contents__center__submit__botton'
+        = f.submit "編集する", class: 'post__text__contents__center__submit__botton'
         = link_to "キャンセル", root_path,class: 'post__text__contents__center__submit__botton'
 
 

@@ -1,3 +1,4 @@
+// post_text/index
 .contents__container{
   width: 580px;
   margin: 0 auto;
@@ -164,10 +165,18 @@
         border: 5px solid transparent;
         border-right: 5px solid #fff;
         }
-        &__icon{
-          line-height: 50px;
-        }
-      }
+        .btn-group{
+          float: right;
+          button.btn.dropdown-toggle{
+            font-size: 20px;
+            background-color: #F7F9F9;
+          }
+          .dropdown-menu{
+            text-align: center;
+            font-size: 18px;
+            }
+          }
+            }
     }
   }
 }

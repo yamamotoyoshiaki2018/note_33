@@ -6,8 +6,20 @@
           %img{:alt => "note", :src => "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg"}/
       %ul.header__upper__lists
         %li
-          %form.header__upper__lists__note-botton{:action => "/post_texts/new", :method => "get"}
-            %input.header__upper__lists__note-botton__submit{:type => "submit", :value => "ノートを投稿"}/
+          %form.header__upper__lists__note-botton
+          / {:action => "/post_texts/new", :method => "get"}
+          %ul.nav
+            %li
+              %input.header__upper__lists__note-botton__submit{:type => "button", :value => "ノートを投稿"}/
+              %ul
+                %li
+                  = link_to "テキスト投稿", "/post_texts/new",:style=>"color:white;"
+                %li
+                  = link_to "イメージ投稿", "/post_images/new",:style=>"color:white;"
+
+
+
+
         %li
           .header__upper__lists__user-icon
             %ul.nav
@@ -24,7 +36,7 @@
                   %li
                     = link_to "マガジン一覧", root_path,:style=>"color:white;"
                   %li
-                    = link_to "画像一覧", root_path,:style=>"color:white;"
+                    = link_to "画像一覧", post_images_path,:style=>"color:white;"
                   %li
                     = link_to "アカウント設定", edit_user_registration_path,:style=>"color:white;"
                   %li
@@ -113,20 +125,19 @@
                 %li
                   = fa_icon ("plus 2x")
             .contents__container__center__bottom__right
-              %ul.nav
-                %li.contents__container__center__bottom__right__icon
-                  = fa_icon ("ellipsis-h 2x")
-                  %ul
-                    %li.contents__container__center__bottom__right__lists
-                      = link_to 'コメントする', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :get
-                    %li
-                      = link_to '詳細', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :get
-                    %li
-                      - if user_signed_in? && current_user.id == post_text.user_id
-                        = link_to '編集', "/post_texts/#{post_text.id}/edit",:style=>"color:white;", method: :get
-                    %li
-                      - if user_signed_in? && current_user.id == post_text.user_id
-                        = link_to '削除', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :delete
+              .btn-group
+                %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
+                .dropdown-menu
+                  .dropdown-item
+                  = link_to "詳細", post_text_path(post_text.id), method: :get
+                  .dropdown-item
+                  - if user_signed_in? && current_user.id == post_text.user_id
+                    = link_to '編集', "/post_texts/#{post_text.id}/edit", method: :get
+                  .dropdown-item
+                  - if user_signed_in? && current_user.id == post_text.user_id
+                    = link_to '削除', "/post_texts/#{post_text.id}", method: :delete
+
+      / = render partial: "post_texts/image", locals: { post_image: @post_image }
 
 
   .footer
