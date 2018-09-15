@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180913062227) do
+ActiveRecord::Schema.define(version: 20180914062721) do
 
   create_table "comments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -28,6 +28,25 @@ ActiveRecord::Schema.define(version: 20180913062227) do
     t.index ["followed_id"], name: "index_follows_on_followed_id", using: :btree
     t.index ["user_id", "followed_id"], name: "index_follows_on_user_id_and_followed_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_follows_on_user_id", using: :btree
+  end
+
+  create_table "magazine_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "magazine_id"
+    t.integer  "note_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["magazine_id"], name: "index_magazine_notes_on_magazine_id", using: :btree
+    t.index ["note_id"], name: "index_magazine_notes_on_note_id", using: :btree
+  end
+
+  create_table "magazines", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string   "magazine_title"
+    t.text     "magazine_description",    limit: 65535
+    t.string   "magazine_header_image"
+    t.integer  "magazine_author_id"
+    t.integer  "magazine_publish_status"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -92,4 +111,6 @@ ActiveRecord::Schema.define(version: 20180913062227) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "magazine_notes", "magazines"
+  add_foreign_key "magazine_notes", "notes"
 end
