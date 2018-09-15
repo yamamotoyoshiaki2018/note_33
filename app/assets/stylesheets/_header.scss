@@ -125,8 +125,6 @@
   }
 }
 
-
-
 .nav {
   // width: 150px;
   height: 40px;
@@ -168,6 +166,8 @@
 .nav li ul li {
   overflow: hidden;
   height: 0;
+  margin-right: 30px;
+  padding-top: -30px;
 }
 .nav li ul li a {
   border-top: 1px solid #eee;
@@ -175,6 +175,12 @@
 .nav li:hover > ul > li {
   overflow: visible;
   height: 40px;
+}
+.nav ul li li.make_text{
+  float: right;
+}
+.nav ul li li li.make_image{
+  float: right;
 }
   // .nav li ul li ul {
   //   top: 0;
