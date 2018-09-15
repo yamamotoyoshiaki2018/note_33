@@ -1,0 +1,64 @@
+
+.header
+  .header__upper
+    .header__upper__logo
+      = link_to  root_path do
+        %img{:alt => "note", :src => "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg"}/
+
+.contents__post
+  - @post_images.each do |post_image|
+    .contents__post__image
+      = image_tag post_image.image, size: "580x400", alt: ""
+      .contents__post__image__title
+        = post_image.title
+
+    .contents__post__bottom
+      .contents__post__bottom__icon
+        - if current_user.avatar_image?
+          = image_tag current_user.avatar_image
+        - else
+          = fa_icon ("smile 2x")
+      %ul
+        %li
+          .contents__post__bottom__name
+            = post_image.user.name
+          .contents__post__bottom__date
+            = post_image.created_at.strftime("%Y年%m月%d日 %H時%M分")
+
+      .contents__post__bottom__right
+      .btn-group
+        %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
+        .dropdown-menu
+          .dropdown-item
+          = link_to "詳細", post_image_path(post_image.id), method: :get
+          .dropdown-item
+          - if user_signed_in? && current_user.id == post_image.user_id
+            = link_to '編集', "/post_images/#{post_image.id}/edit", method: :get
+          .dropdown-item
+          - if user_signed_in? && current_user.id == post_image.user_id
+            = link_to '削除', "/post_images/#{post_image.id}", method: :delete
+
+
+        / %ul.contents__post__bottom__right__icon
+        /   %li
+        /     = fa_icon ("heart 2x")
+        /   %li
+        /     = fa_icon ("arrow-right 2x")
+        /   %li
+        /     = fa_icon ("plus 2x")
+        / %ul.nav
+        /   %li.contents__post__bottom__right__icon__select
+        /     = fa_icon ("ellipsis-h 2x")
+        /     %ul
+        /       %li.contents__post__bottom__right__lists
+        /         = link_to "詳細", post_image_path(post_image.id), method: :get
+        /       %li
+        /         - if user_signed_in? && current_user.id == post_image.user_id
+        /           = link_to '編集', "/post_images/#{post_image.id}/edit",:style=>"color:white;", method: :get
+        /       %li
+        /         - if user_signed_in? && current_user.id == post_image.user_id
+        /           = link_to '削除', "/post_images/#{post_image.id}",:style=>"color:white;", method: :delete
+
+
+
+

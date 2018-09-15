@@ -1,0 +1,112 @@
+// Place all the styles related to the post_images controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// post_image/index
+.contents__post{
+  width: 580px;
+  margin: 0 auto;
+  // border: 1px solid #999;
+  margin-bottom: 30px;
+  &__image{
+    height: 400px;
+    width: 580px;
+    position: relative;
+    z-index: 1;
+    &__title{
+      color: white;
+      font-size: 30px;
+      position: absolute;
+      bottom: 0;
+      margin: 0 0 20px 20px;
+    }
+  }
+  &__bottom{
+    height: 50px;
+    width: 580px;
+
+    &__icon{
+      float: left;
+      line-height: 50px;
+      margin: 0 10px;
+      color: $base_color;
+    }
+    ul{
+      float: left;
+      li{
+      }
+    }
+    &__right{
+    }
+    .btn-group{
+      float: right;
+      button.btn.dropdown-toggle{
+        font-size: 20px;
+        background-color: #F7F9F9;
+      }
+      .dropdown-menu{
+        text-align: center;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+
+// post_image詳細ページ
+.post__image__contents{
+  &__center{
+    width: 620px;
+    margin:100px 0 200px 400px;
+    &__img{
+      width: 100%;
+    }
+    &__upload{
+      display: none;
+    }
+    &__header-image-preview{
+    }
+    &__title{
+      &__image{
+        height: 50px;
+        width: 100%;
+        font-size: 50px;
+        border-style: none;
+      }
+    }
+    &__textarea{
+      &__text{
+        height: 350px;
+        width: 100%;
+        border-style: none;
+        font-size: 20px;
+        &__img{
+          &__upload{
+            display: none;
+          }
+        }
+      }
+    }
+    &__submit{
+      &__botton{
+        height: 40px;
+        width: 180px;
+        margin: 0 auto;
+        background-color: $base_color;
+        border-radius: 8px;
+        line-height: 2.5em;
+        text-align: center;
+        font-size: 15px;
+        color: white;
+        float: left;
+        margin-right: 20px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
