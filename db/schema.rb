@@ -23,12 +23,19 @@ ActiveRecord::Schema.define(version: 20180916051422) do
 
   create_table "follows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.integer  "followed_id"
+    t.integer  "followed_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["followed_id"], name: "index_follows_on_followed_id", using: :btree
     t.index ["user_id", "followed_id"], name: "index_follows_on_user_id_and_followed_id", unique: true, using: :btree
     t.index ["user_id"], name: "index_follows_on_user_id", using: :btree
+  end
+
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "post_text_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "magazine_notes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -79,6 +86,7 @@ ActiveRecord::Schema.define(version: 20180916051422) do
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
     t.integer  "user_id"
+    t.integer  "likes_count"
   end
 
   create_table "taggings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
