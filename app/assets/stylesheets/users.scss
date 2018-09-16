@@ -366,15 +366,15 @@ h4 {
   height: 100%;
   margin: 0 auto;
   &__form{
-    padding: 50px;
-    height: 100px;
-    width: 300px;
-    margin: 0 auto;
+    padding-top: 50px;
+    text-align: center;
     margin-bottom: 50px;
-    &__box{
+    P{
       input{
-        #search{
+        height: 40px;
+        input[id="serch"]{
           height: 50px;
+          width: 300px;
         }
       }
     }
@@ -382,7 +382,6 @@ h4 {
   &__result{
     width: 100%;
     margin-left: 300px;
-
     &__icons{
       ul.avatar{
         height: 75px;
@@ -420,9 +419,7 @@ h4 {
           font-size: 20px;
           float: left;
         }
-
       }
-
     }
   }
 }
