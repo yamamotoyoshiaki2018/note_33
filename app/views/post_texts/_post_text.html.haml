@@ -1,0 +1,51 @@
+.contents__container
+  .contents__container__top
+    .contents__container__top__icon
+      - if post_text.user.avatar_image?
+        = image_tag post_text.user.avatar_image
+      - else
+        = fa_icon ("smile 2x")
+    %ul
+      %li
+        .contents__container__top__nickname
+          = link_to post_text.user.name, user_path(post_text.user), class: "link-green"
+        .contents__container__top__date
+          = post_text.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .contents__container__center
+    .contents__container__center__headerimg
+      - if post_text.header_image.present?
+        = image_tag post_text.header_image, size: "578x300", alt: ""
+    .contents__container__center__title
+      = post_text.title
+    .contents__container__center__text
+      - if post_text.text.present?
+        = simple_format(post_text.text)
+    .contents__container__center__img
+      - if post_text.image.present?
+        = image_tag post_text.image, size: "", alt: "" , :class =>".contents__container__center__img__2nd"
+    .contents__container__center__tags
+      = render 'post_texts/tag_list', tag_list: post_text.tag_list
+    .contents__container__center__bottom
+      .contents__container__center__bottom__left
+        %ul
+          %li
+            = fa_icon ("heart 2x")
+          %li
+            = fa_icon ("arrow-right 2x")
+          %li
+            = fa_icon ("plus 2x")
+      .contents__container__center__bottom__right
+        %ul.nav
+          %li.contents__container__center__bottom__right__icon
+            = fa_icon ("ellipsis-h 2x")
+            %ul
+              %li.contents__container__center__bottom__right__lists
+                = link_to 'コメントする', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :get
+              %li
+                = link_to '詳細', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :get
+              %li
+                - if user_signed_in? && current_user.id == post_text.user_id
+                  = link_to '編集', "/post_texts/#{post_text.id}/edit",:style=>"color:white;", method: :get
+              %li
+                - if user_signed_in? && current_user.id == post_text.user_id
+                  = link_to '削除', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :delete
