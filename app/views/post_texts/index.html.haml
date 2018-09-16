@@ -99,8 +99,10 @@
           .contents__container__center__bottom
             .contents__container__center__bottom__left
               %ul
-                %li#function_like
-                  = render partial: "post_texts/like", locals: { post_text: post_text, like: @like }
+                %li
+                  #function_like
+                    = render partial: "post_texts/like", locals: { post_text: post_text, like: @like }
+
 
                 %li
                   = fa_icon ("arrow-right 2x")

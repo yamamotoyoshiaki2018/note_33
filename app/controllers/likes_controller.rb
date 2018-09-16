@@ -20,9 +20,8 @@ class LikesController < ApplicationController
   def create
     @like = Like.create(user_id: current_user.id, post_text_id: params[:post_text_id])
     @likes = Like.where(post_text_id: params[:post_text_id])
-    # @post_texts = PostText.all
-    # @post_text = PostText.find(1)
-    # binding.pry
+    @post_texts = PostText.all
+    @post_text = PostText.new
     respond_to do |format|
       format.html { redirect_to post_texts_path }
       format.js
@@ -34,6 +33,7 @@ class LikesController < ApplicationController
     @like.destroy
     @likes = Like.where(post_text_id: params[:post_text_id])
     @post_texts = PostText.all
+    @post_text = PostText.new
     respond_to do |format|
       format.html { redirect_to post_texts_path }
       format.js
