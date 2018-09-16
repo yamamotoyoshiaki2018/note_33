@@ -1,5 +1,5 @@
 class PostText < ApplicationRecord
-  belongs_to :note
+  has_one :note
   belongs_to :user
   has_many :comments, dependent: :destroy
 
