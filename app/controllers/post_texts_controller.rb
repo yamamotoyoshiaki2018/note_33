@@ -8,6 +8,7 @@ class PostTextsController < ApplicationController
     else
       @post_texts = PostText.includes(:user).order("created_at DESC")
     end
+
   end
 
   def new
