@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.search(params[:search])
+  end
+
   def edit
   end
 
@@ -38,7 +42,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :note33_id, :header_image, :avatar_image, :self_introduction)
+    params.require(:user).permit(:name, :email, :note33_id, :header_image, :avatar_image, :self_introduction, :q)
   end
 
 end
