@@ -60,7 +60,7 @@
           });
           </script>
 
-        = f.text_area :text, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
+        = f.cktext_area :text, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
       .form-group
         = f.label :topic_list, "タグ"
         %br/

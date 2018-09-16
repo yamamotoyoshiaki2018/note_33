@@ -119,6 +119,8 @@
           .contents__container__center__text
             - if post_text.text.present?
               = simple_format(post_text.text)
+              = truncate(post_text.text)
+              = link_to '続きを読む', post_text
           .contents__container__center__img
             - if post_text.image.present?
               = image_tag post_text.image, size: "", alt: "" , :class =>".contents__container__center__img__2nd"
