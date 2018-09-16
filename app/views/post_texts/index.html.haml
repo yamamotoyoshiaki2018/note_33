@@ -42,9 +42,18 @@
                   %li
                     = link_to "ログアウト", destroy_user_session_path,:style=>"color:#787c7b;", :method => :delete,:style=>"color:white;"
         %li
-          %form.header__upper__lists__search{:action => "#", :method => "get"}
-            %input.header__upper__lists__search__text{:placeholder => "キーワードや作品名で検索", :size => "25", :type => "text"}/
-            %input.header__upper__lists__search__botton{:type => "submit", :value => "🔍"}/
+          = fa_icon ("search 2x")
+          = link_to "ユーザー検索", users_path
+          = fa_icon ("search 2x")
+          = link_to "タグ検索", users_path
+
+          / %form.header__upper__lists__search{:action => "#", :method => "get"}
+          /   %input.header__upper__lists__search__text{:placeholder => "キーワードや作品名で検索", :size => "25", :type => "text"}/
+          /   %input.header__upper__lists__search__botton{:type => "submit", :value => "🔍"}/
+
+
+
+
     .header__lower
       .header__lower__top
         %ul.header__lower__top__lists
