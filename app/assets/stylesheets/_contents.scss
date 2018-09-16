@@ -1,14 +1,25 @@
+// post_text/index
 .contents__container{
   width: 580px;
   margin: 0 auto;
-  border: 1px solid #999;
+  border: 1px solid #eee;
   margin-bottom: 30px;
+  border-radius: 3px;
+  background-color: white;
   &__top{
+    padding-top: 15px;
     &__icon{
       float: left;
-      line-height: 60px;
+      line-height: 40px;
       margin: 0 10px;
       color: $base_color;
+      padding-bottom: 15px;
+      img {
+        height: 40px;
+        width: 40px;
+        border: none;
+        border-radius: 20px;
+      }
     }
     &__delete{
       float: right;
@@ -27,31 +38,46 @@
       float: left;
     }
     &__nickname{
+      height: 22px;
+      line-height: 24px;
+      font-size: 16px;
     }
     &__date{
+      height: 18px;
+      line-height: 18px;
       font-size: 12px;
+      padding-bottom: 15px;
     }
   }
   &__center{
     &__headerimg{
       // height: 300px;
       width: 100%;
+      margin-top: 15px;
     }
     &__title{
       width: 550px;
       line-height: 50px;
-      font-size: 30px;
+      font-size: 22px;
       clear: both;
       word-wrap:break-word;
-      border-bottom: solid 2px #999;
-      text-align: center;
+      border-bottom: solid 1px #eee;
+      // text-align: center;
       margin: 0 auto;
     }
     &__text{
-      font-size: 15px;
+      width: 550px;
+      font-size: 16px;
       word-wrap:break-word;
       min-height: 50px;
-      margin: 10px 12px;
+      margin: 10px auto;
+    }
+    &__tags{
+      width: 550px;
+      font-size: 12px;
+      line-height: 16px;
+      word-wrap:break-word;
+      margin: 10px auto;
     }
     &__img{
       width: 580px;
@@ -62,12 +88,14 @@
     }
     &__bottom{
       height: 50px;
-      padding: 0 0 0 15px;
-      border-top: 1px solid #999;
+      width: 550px;
+      border-top: 1px solid #eee;
+      margin: 0 auto;
       color: #999;
       ul li{
         float: left;
-        margin-right: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
       }
       &__left{
         // line-height: 50px;
@@ -146,8 +174,16 @@
         border: 5px solid transparent;
         border-right: 5px solid #fff;
         }
-        &__icon{
-          // line-height: 5px;
+        .btn-group{
+          float: right;
+          button.btn.dropdown-toggle{
+            font-size: 20px;
+            background-color: #F7F9F9;
+          }
+          .dropdown-menu{
+            text-align: center;
+            font-size: 18px;
+          }
         }
       }
     }
@@ -192,8 +228,6 @@
     }
   }
 }
-
-
 
 
 

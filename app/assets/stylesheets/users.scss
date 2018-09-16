@@ -1,5 +1,5 @@
 .account-page {
-    margin: 60px calc( (100% - 362px) / 2);
+    margin: 60px calc( (100% - 330px) / 2);
     background-color: #f7f9f9;
 
   .account-page__inner {
@@ -75,7 +75,7 @@
 
     .field-input {
       input {
-        width: 316px;
+        width: 296px;
         padding: 5px;
         letter-spacing: 1px;
         border-radius: 4px;
@@ -87,7 +87,7 @@
   .btn {
     display: inline-block;
     height: 50px;
-    width: 330px;
+    width: 295px;
     padding: 0 30px;
     line-height: 50px;
     letter-spacing: 1px;
@@ -167,9 +167,10 @@
   font-size: 12px;
 }
 
-.link-green {
+a.link-green{
   color: #249f80;
   text-decoration: none;
+  font-weight: 200;
 }
 
 .actions {
@@ -207,7 +208,7 @@ h4 {
 
     .account-edit-page__inner-bottom {
       float: left;
-      width: 340px;
+      width: 100%;
       border: 1px solid #ddd;
       border-radius: 3px;
       padding: 25px 105px;
@@ -305,7 +306,7 @@ h4 {
     .field-input {
       input {
         font-size: 12px;
-        width: 316px;
+        width: 340px;
         padding: 5px;
         letter-spacing: 1px;
         border-radius: 4px;
@@ -317,7 +318,7 @@ h4 {
   .btn {
     display: inline-block;
     height: 50px;
-    width: 330px;
+    width: 340px;
     padding: 0 30px;
     line-height: 50px;
     letter-spacing: 1px;

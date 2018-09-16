@@ -14,6 +14,8 @@
             .profile-page__header__contents__left__box__image
               - if current_user.avatar_image?
                 = image_tag current_user.avatar_image
+              - else
+                = fa_icon ("smile 7x")
               %p
                 = fa_icon ("camera")
               .profile-page__header__contents__left__box__image__select

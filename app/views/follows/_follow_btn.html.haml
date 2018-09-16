@@ -1,10 +1,11 @@
-- if current_user.following?(user)
-  = form_for(current_user.follows.find_by(followed_id: user.id), html: { method: :delete }) do |f|
-    = hidden_field_tag :followed_id, user.id
-    = button_tag( class: "mypage__header__right__top__right__follow-btn unfollow") do
-      = content_tag :span, " フォロー中", class: "fas fa-user-check"
-- else
-  = form_for(current_user.follows.build) do |f|
-    = hidden_field_tag :followed_id, user.id
-    = button_tag( class: "mypage__header__right__top__right__follow-btn follow") do
-      = content_tag :span, " フォローする", class: "fas fa-user-plus"
+- unless current_user?(@user)
+  - if current_user.following?(user)
+    = form_for(current_user.follows.find_by(followed_id: user.id), html: { method: :delete }) do |f|
+      = hidden_field_tag :followed_id, user.id
+      = button_tag( class: "mypage__header__right__top__right__follow-btn unfollow") do
+        = content_tag :span, " フォロー中", class: "fas fa-user-check"
+  - else
+    = form_for(current_user.follows.build) do |f|
+      = hidden_field_tag :followed_id, user.id
+      = button_tag( class: "mypage__header__right__top__right__follow-btn follow") do
+        = content_tag :span, " フォローする", class: "fas fa-user-plus"

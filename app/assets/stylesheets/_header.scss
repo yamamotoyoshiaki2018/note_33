@@ -16,7 +16,7 @@
     &__search{
       box-sizing: border-box;
       position: relative;
-      border: 1px solid #999;
+      border: 1px solid #eee;
       padding: 3px 10px;
       border-radius: 20px;
       height: 37px;
@@ -38,31 +38,45 @@
         color: $base_color;
         position: absolute;
         width: 2.5em;
-        height: 2.5em;
+        height: 2.8em;
         right: 0;
         top: -10px;
         outline : none;
       }
     }
     &__user-icon{
+      // height: 48px;
+      // width: 48px;
       &__smile{
-      height: 48px;
-      width: 48px;
-      line-height: 48px;
+      height: 40px;
+      width: 40px;
+      line-height: 40px;
       color: $base_color;
       margin: 0 16px;
+        img {
+          height: 40px;
+          width: 40px;
+          border: none;
+          border-radius: 20px;
+          background-color: #f7f9f9;
+        }
+        ul {
+          margin-left: 60px;
+          margin-top: -10px;
+        }
       }
     }
     &__note-botton{
       &__submit{
         height: 37px;
-        width: 180px;
-        border-radius: 8px;
+        width: 120px;
+        border: 1px solid $base_color;
+        border-radius: 6px;
         background-color: $base_color;
         margin-right: 16px;
-        line-height: 2.5em;
+        line-height: 37px;
         text-align: center;
-        font-size: 15px;
+        font-size: 13px;
         color: white;
       }
     }
@@ -77,7 +91,7 @@
   ul{
     text-align: center;
     li{
-      font-size: 15px;
+      font-size: 13px;
       float: left;
 
     }
@@ -86,18 +100,20 @@
     height: 48px;
     color: #787c7b;
     font-size: 14px;
-    padding-bottom: 15px;
+    // padding-bottom: 15px;
     &__list{
-      background-color: $base_color;
-      border-radius: 5px;
+      background-color: white;
       height: 48px;
-      width: 115px;
+      width: 100px;
       line-height: 48px;
       text-align: center;
       margin-right: 10px;
     }
     &__list:hover{
-      background-color: red;
+      border-bottom: 3px solid gray;
+      a {
+        font-weight: bold;
+      }
     }
     &__right{
       float: right;
@@ -105,7 +121,7 @@
     }
   }
   &__bottom{
-    border-top: 1px solid;
+    border-top: 1px solid #eee;
     height: 54px;
     line-height: 54px;
     color: #787c7b;
@@ -115,8 +131,6 @@
     }
   }
 }
-
-
 
 .nav {
   // width: 150px;
@@ -159,6 +173,8 @@
 .nav li ul li {
   overflow: hidden;
   height: 0;
+  margin-right: 30px;
+  padding-top: -30px;
 }
 .nav li ul li a {
   border-top: 1px solid #eee;
@@ -166,6 +182,12 @@
 .nav li:hover > ul > li {
   overflow: visible;
   height: 40px;
+}
+.nav ul li li.make_text{
+  float: right;
+}
+.nav ul li li li.make_image{
+  float: right;
 }
   // .nav li ul li ul {
   //   top: 0;
