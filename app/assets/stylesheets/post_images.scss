@@ -3,75 +3,112 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // post_image/index
-.contents__post{
-  width: 580px;
-  margin: 0 auto;
-  border: 1px solid #eee;
-  border-radius: 3px;
-  background-color: white;
-  margin-bottom: 30px;
-  &__image{
-    height: 400px;
-    width: 580px;
-    padding-top: 5px;
-    position: relative;
-    z-index: 1;
-    &__title{
-      color: white;
-      font-size: 30px;
-      position: absolute;
-      bottom: 0;
-      margin: 0 0 20px 20px;
-    }
-  }
-  &__bottom{
-    height: 65px;
-    width: 580px;
-    padding-top: 15px;
-    &__icon{
-      float: left;
-      line-height: 40px;
-      margin: 0 10px;
-      color: $base_color;
-      img {
-        height: 40px;
-        width: 40px;
-        border: none;
-        border-radius: 20px;
-      }
-    }
-    &__name{
-      height: 22px;
-      line-height: 24px;
-      font-size: 16px;
-    }
-    &__date{
-      height: 18px;
-      line-height: 18px;
-      font-size: 12px;
-      padding-bottom: 15px;
-    }
-    ul{
-      float: left;
-      li{
-      }
-    }
-    &__right{
-    }
-    .btn-group{
-      float: right;
-      margin-right: 10px;
-      button.btn.dropdown-toggle{
-        font-size: 18px;
-        background-color: white;
-      }
-      .dropdown-menu{
-        text-align: center;
-        font-size: 18px;
+
+  .contents__container__center{
+    &__headerimg{
+      // height: 300px;
+      width: 100%;
+      margin-top: 15px;
+      position: relative;
+      &__title{
+        color: white;
+        font-size: 40px;
+        position: absolute;
+        bottom: 0;
+        margin: 0 0 20px 20px;
       }
     }
   }
-}
+
+
+// .contents__post{
+//   width: 580px;
+//   margin: 0 auto;
+//   border: 1px solid #eee;
+//   border-radius: 3px;
+//   background-color: white;
+//   margin-bottom: 30px;
+//   &__image{
+//     height: 400px;
+//     width: 580px;
+//     padding-top: 5px;
+//     position: relative;
+//     z-index: 1;
+//     &__title{
+//       color: white;
+//       font-size: 30px;
+//       position: absolute;
+//       bottom: 0;
+//       margin: 0 0 20px 20px;
+//     }
+//   }
+//   img {
+//     height: 40px;
+//     width: 40px;
+//     border: none;
+//     border-radius: 20px;
+//   }
+//   &__bottom{
+//     height: 65px;
+//     width: 580px;
+//     padding-top: 15px;
+//     float: right;
+
+//     &__right{
+//       float: right;
+//       line-height: 40px;
+//       margin: 0 10px;
+//       color: $base_color;
+//       &__icon{
+
+//       }
+//       ul{
+//         li{
+
+//         }
+//       }
+//     }
+//     &__name{
+//       height: 22px;
+//       line-height: 24px;
+//       font-size: 16px;
+//     }
+//     &__date{
+//       height: 18px;
+//       line-height: 18px;
+//       font-size: 12px;
+//       padding-bottom: 15px;
+//     }
+//     ul{
+
+//       li{
+//         float: right;
+//       }
+//     }
+//     &__right{
+//       width: 100%;
+//       height: 65px;
+//       ul{
+//         float: right;
+//         li{
+
+//         }
+//       }
+//     }
+//     .btn-group{
+//       float: right;
+//       margin-right: 10px;
+//       button.btn.dropdown-toggle{
+//         font-size: 18px;
+//         background-color: white;
+//       }
+//       .dropdown-menu{
+//         text-align: center;
+//         font-size: 18px;
+//       }
+//     }
+//   }
+// }
 
 
 // post_image詳細ページ
