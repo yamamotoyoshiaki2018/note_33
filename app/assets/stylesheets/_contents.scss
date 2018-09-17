@@ -83,7 +83,6 @@
       width: 580px;
       text-align: center;
       &__2nd{
-        // text-align: center;
       }
     }
     &__bottom{
@@ -98,8 +97,17 @@
         margin-left: 10px;
       }
       &__left{
-        line-height: 60px;
-
+        // line-height: 50px;
+        padding-top: 8px;
+        #delete-like-button{
+          color: red;
+          border-style: none;
+          background-color: #F7F9F9;
+        }
+        #like-button{
+          border-style: none;
+          background-color: #F7F9F9;
+        }
       }
       &__right{
         float: right;
@@ -169,14 +177,17 @@
           float: right;
           button.btn.dropdown-toggle{
             font-size: 20px;
-            background-color: #F7F9F9;
+            height: 10px;
+            width: 20px;
+            margin:0 20px 20px;
+            // background-color: #F7F9F9;
           }
           .dropdown-menu{
             text-align: center;
             font-size: 18px;
-            }
           }
-            }
+        }
+      }
     }
   }
 }
