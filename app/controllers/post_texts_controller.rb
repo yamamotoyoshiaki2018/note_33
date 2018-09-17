@@ -1,8 +1,7 @@
 class PostTextsController < ApplicationController
 
   def index
-    @like = Like.all
-    @post_text = PostText.new
+    @like = Like.create(user_id: current_user.id, post_text_id: params[:post_text_id])
     if params[:tag]
       @post_texts = PostText.tagged_with(params[:tag]).order("created_at DESC")
     else
@@ -27,8 +26,6 @@ class PostTextsController < ApplicationController
       user_id: current_user.id)
     @post_text.tag_list.add(note_params[:tag_list], parse: true)
     @post_text.save
-    note = Note.new(user_id: current_user.id, post_text_id: @post_text.id)
-    note.save
     redirect_to post_texts_path
     # redirect_to root_path
   end
@@ -41,7 +38,6 @@ class PostTextsController < ApplicationController
   def destroy
     post_text = PostText.find(params[:id])
     if post_text.user_id == current_user.id
-      Note.find_by(post_text_id: post_text.id).delete
       post_text.destroy
     end
     redirect_to post_texts_path
@@ -70,7 +66,7 @@ class PostTextsController < ApplicationController
       :remove_header_image,
       :remove_image,
       :image_cache,
-      :tag_list,
+      :tag_list
       )
   end
 end
