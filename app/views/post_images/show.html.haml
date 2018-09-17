@@ -26,10 +26,11 @@
                     = link_to "アカウント設定", edit_user_registration_path,:style=>"color:white;"
                   %li
                     = link_to "ログアウト", destroy_user_session_path,:style=>"color:#787c7b;", :method => :delete,:style=>"color:white;"
-        %li
-          %form.header__upper__lists__search{:action => "#", :method => "get"}
-            %input.header__upper__lists__search__text{:placeholder => "キーワードや作品名で検索", :size => "25", :type => "text"}/
-            %input.header__upper__lists__search__botton{:type => "submit", :value => "🔍"}/
+      %li
+        = fa_icon ("search 2x")
+        = link_to "ユーザー検索", users_path
+        = fa_icon ("search 2x")
+        = link_to "タグ検索", users_path
 
   .contents
     .contents__container
@@ -47,20 +48,19 @@
               = @post_image.created_at.strftime("%Y年%m月%d日 %H時%M分")
 
       .contents__container__center
-
-
         .contents__container__center__img
           - if @post_image.image.present?
             = image_tag @post_image.image, size: "580x400", alt: "" , :class =>".contents__container__center__img__2nd"
         .contents__container__center__bottom
           .contents__container__center__bottom__left
-            %ul
-              %li
-                = fa_icon ("heart 2x")
-              %li
-                = fa_icon ("arrow-right 2x")
-              %li
-                = fa_icon ("plus 2x")
+            / %ul
+            /   %li
+            /     #function_like
+            /       = render partial: "like", locals: { post_image: @post_image, like: @like }
+            /   %li
+            /     = fa_icon ("arrow-right 2x")
+            /   %li
+            /     = fa_icon ("plus 2x")
         .contents__container__center__title
           = @post_image.title
         .contents__container__center__text
