@@ -46,16 +46,36 @@
 
 
       .post__text__contents__center__textarea
-
+        / #editor
         = f.text_area :image_description, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
 
       .post__text__contents__center__submit
         = f.submit "投稿する", class: 'post__text__contents__center__submit__botton'
         = link_to "キャンセル", root_path,class: 'post__text__contents__center__submit__botton'
 
+      .post__text__contents__right
+        .post__text__contents__right__box
+          = form_for @post_image, :url => {:action => :create} do |f|
+            .form-group
+              = f.text_field :title , class: 'form-control', placeholder: 'タイトルを入力してください'
+            .form-group
+              #editor
+                %textarea.form-control{:debounce => "50", :name => "post[image_description]", :rows => "10", "v-model" => "input", placeholder: 'ノート本文'}
+                %div{"v-html" => "input | marked"}
 
-    .post__text__contents__right
-      .post__text__contents__right__box
+        <script type="text/javascript">
+        window.onload = function() {
+        new Vue({
+        el: '#editor',
+        data: {
+        input: '<%== j @post_image.image_description %>',
+        },
+        filters: {
+        marked: marked,
+        },
+        });
+        };
+        </script>
 
 
 

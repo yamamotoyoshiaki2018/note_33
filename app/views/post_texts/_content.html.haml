@@ -1,0 +1,62 @@
+.contents__container
+  .contents__container__top
+    .contents__container__top__icon
+      = fa_icon ("smile 2x")
+    %ul
+      %li
+        .contents__container__top__nickname
+          = post_text.user.name
+        .contents__container__top__date
+          = post_text.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .contents__container__center
+    .contents__container__center__headerimg
+      - if post_text.header_image.present?
+        = image_tag post_text.header_image, size: "580x300", alt: ""
+    .contents__container__center__title
+      = post_text.title
+    .contents__container__center__text
+      - if post_text.text.present?
+        = simple_format(post_text.text)
+    .contents__container__center__img
+      - if post_text.image.present?
+        = image_tag post_text.image, size: "", alt: "" , :class =>".contents__container__center__img__2nd"
+    .contents__container__center__bottom
+      .contents__container__center__bottom__left
+        %ul
+          %li#function_like
+            / = render partial: "post_texts/like", locals: { post_text: post_text, like: @like }
+            - if user_signed_in?
+              - if post_text.like_user(current_user.id)
+                = button_to post_text_like_path(like, post_text_id: post_text.id), method: :delete, id: "delete-like-button", remote: true do
+                  = fa_icon ("heart 2x")
+                  %span
+                    = post_text.likes_count
+              - else
+                = button_to post_text_likes_path(post_text), id: "like-button", remote: true do
+                  = fa_icon ("heart 2x")
+                  %span
+                    = post_text.likes_count
+            - else
+              = fa_icon ("heart 2x")
+              %span
+                = post_text.likes_count
+
+          %li
+            = fa_icon ("arrow-right 2x")
+          %li
+            = fa_icon ("plus 2x")
+      .contents__container__center__bottom__right
+        %ul.nav
+          %li.contents__container__center__bottom__right__icon
+            = fa_icon ("ellipsis-h 2x")
+            %ul
+              %li.contents__container__center__bottom__right__lists
+                = link_to 'コメントする', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :get
+              %li
+                = link_to '詳細', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :get
+              %li
+                - if user_signed_in? && current_user.id == post_text.user_id
+                  = link_to '編集', "/post_texts/#{post_text.id}/edit",:style=>"color:white;", method: :get
+              %li
+                - if user_signed_in? && current_user.id == post_text.user_id
+                  = link_to '削除', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :delete

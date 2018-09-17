@@ -97,6 +97,7 @@
 
   .contents
     - @post_texts.each do |post_text|
+      / = render partial: "content", locals: { post_text: post_text, like: @like }
       .contents__container
         .contents__container__top
           .contents__container__top__icon
@@ -120,7 +121,8 @@
             - if post_text.text.present?
               = simple_format(post_text.text)
               = truncate(post_text.text)
-              = link_to '続きを読む', post_text
+              = link_to '続きを読む', post_text_path(post_text.id)
+
           .contents__container__center__img
             - if post_text.image.present?
               = image_tag post_text.image, size: "", alt: "" , :class =>".contents__container__center__img__2nd"
@@ -130,7 +132,8 @@
             .contents__container__center__bottom__left
               %ul
                 %li
-                  = fa_icon ("heart 2x")
+                  #function_like
+                    = render partial: "post_texts/like", locals: { post_text: post_text, like: @like }
                 %li
                   = fa_icon ("arrow-right 2x")
                 %li
@@ -147,8 +150,6 @@
                   .dropdown-item
                   - if user_signed_in? && current_user.id == post_text.user_id
                     = link_to '削除', "/post_texts/#{post_text.id}", method: :delete
-
-      / = render partial: "post_texts/image", locals: { post_image: @post_image }
 
 
   .footer
