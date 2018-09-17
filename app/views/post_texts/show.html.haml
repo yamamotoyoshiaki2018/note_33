@@ -27,9 +27,10 @@
                   %li
                     = link_to "ログアウト", destroy_user_session_path,:style=>"color:#787c7b;", :method => :delete,:style=>"color:white;"
         %li
-          %form.header__upper__lists__search{:action => "#", :method => "get"}
-            %input.header__upper__lists__search__text{:placeholder => "キーワードや作品名で検索", :size => "25", :type => "text"}/
-            %input.header__upper__lists__search__botton{:type => "submit", :value => "🔍"}/
+          = fa_icon ("search 2x")
+          = link_to "ユーザー検索", users_path
+          = fa_icon ("search 2x")
+          = link_to "タグ検索", users_path
 
   .contents
     .contents__container
@@ -55,7 +56,7 @@
           = @post_text.title
         .contents__container__center__text
           - if @post_text.text.present?
-            = @post_text.text
+            = simple_format(@post_text.text)
         .contents__container__center__img
           - if @post_text.image.present?
             = image_tag @post_text.image, size: "470x300", alt: "" , :class =>".contents__container__center__img__2nd"
@@ -63,13 +64,13 @@
           = render 'post_texts/tag_list', tag_list: @post_text.tag_list
         .contents__container__center__bottom
           .contents__container__center__bottom__left
-            %ul
-              %li
-                = fa_icon ("heart 2x")
-              %li
-                = fa_icon ("arrow-right 2x")
-              %li
-                = fa_icon ("plus 2x")
+            / %ul
+            /   %li
+            /     = fa_icon ("heart 2x")
+            /   %li
+            /     = fa_icon ("arrow-right 2x")
+            /   %li
+            /     = fa_icon ("plus 2x")
 
     .contents__comment
       - if current_user

@@ -1,0 +1,12 @@
+$("#delete-like-button").html("<%= escape_javascript(render partial: 'post_texts/like', locals: { post_text: @post_text, like: @like}) %>");
+
+// $("#delete-like-button").html("#{ escape_javascript(render partial: 'post_texts/like', locals: { post_texts: @post_texts, like: @like })}")
+
+// $("#delete-like-button").html("=(render partial: 'post_texts/like', locals: { post_texts: @post_texts, like: @like })}")
+
+
+// $("#delete-like-button").html("<%= j(render partial: 'like', locals: { post_texts: @post_texts, likes: @likes }) %>");
+
+// $('#delete-like-button').html('#{j(render partial: 'like', locals: { post_texts: @post_texts, likes: @likes })}');
+
+

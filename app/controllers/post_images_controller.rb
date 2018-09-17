@@ -1,6 +1,7 @@
 class PostImagesController < ApplicationController
   def index
     @post_images = PostImage.includes(:user).order("created_at DESC")
+    @like = Like.create(user_id: current_user.id, post_text_id: params[:post_text_id],post_image_id: params[:post_image_id])
   end
 
   def new
@@ -33,6 +34,7 @@ class PostImagesController < ApplicationController
   def show
     @post_image = PostImage.find(params[:id])
     # @comments = @post_image.comments.includes(:user)
+    @like = Like.create(user_id: current_user.id, post_image_id: params[:post_image_id])
   end
 
 
