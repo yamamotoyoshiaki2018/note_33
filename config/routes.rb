@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :post_texts
   root to: 'post_texts#index'
 
-  resources :magazines, only: [:new, :create, :edit, :update]
+  resources :magazines, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 end
 
 
