@@ -1,6 +1,7 @@
 // Place all the styles related to the post_texts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 // post_text新規投稿画面
 .post__text{
   &__header{
@@ -61,6 +62,12 @@
   &__center{
     width: 620px;
     margin:100px 0 200px 400px;
+    &__header-image-preview{
+      img{
+        height: 300px;
+        width: 400px;
+      }
+    }
     &__img{
       width: 100%;
       &__upload{

@@ -52,7 +52,17 @@
           - if @post_image.image.present?
             = image_tag @post_image.image, size: "580x400", alt: "" , :class =>".contents__container__center__img__2nd"
         .contents__container__center__bottom
-          .contents__container__center__bottom__left
+          / .contents__container__center__bottom__left
+          .contents__container__center__bottom__right
+            .btn-group
+              %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
+              .dropdown-menu
+                .dropdown-item
+                - if user_signed_in? && current_user.id == @post_image.user_id
+                  = link_to '編集', "/post_images/#{@post_image.id}/edit", method: :get
+                .dropdown-item
+                - if user_signed_in? && current_user.id == @post_image.user_id
+                  = link_to '削除', "/post_images/#{@post_image.id}", method: :delete
             / %ul
             /   %li
             /     #function_like
@@ -75,6 +85,16 @@
               %textarea.contents__comment__text{:cols => "30", :name => "text", :placeholder => "コメントする", :rows => "2"}
             %li
               %input.contents__comment__botton{:type => "submit", :value => "comment"}/
+
+            .contents__comment__index
+              %h4 ＜コメント一覧＞
+              - if @comments
+                - @comments.each do |comment|
+                  %p
+                    %strong.contents__comment__index__text
+                      = link_to comment.user.name, "/users/#{comment.user_id}",:style=>"color:#2cb696;"
+                      ：
+                    = comment.text
 
 
   .footer

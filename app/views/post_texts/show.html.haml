@@ -63,36 +63,18 @@
         .contents__container__center__tags
           = render 'post_texts/tag_list', tag_list: @post_text.tag_list
         .contents__container__center__bottom
-          .contents__container__center__bottom__left
-            / %ul
-            /   %li
-            /     = fa_icon ("heart 2x")
-            /   %li
-            /     = fa_icon ("arrow-right 2x")
-            /   %li
-            /     = fa_icon ("plus 2x")
+          .contents__container__center__bottom__right
+            .btn-group
+              %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
+              .dropdown-menu
+                .dropdown-item
+                - if user_signed_in? && current_user.id == @post_text.user_id
+                  = link_to '編集', "/post_texts/#{@post_text.id}/edit", method: :get
+                .dropdown-item
+                - if user_signed_in? && current_user.id == @post_text.user_id
+                  = link_to '削除', "/post_texts/#{@post_text.id}", method: :delete
 
-    .contents__comment
-      - if current_user
-        = form_tag("/post_texts/#{@post_text.id}/comments",  method: :post,  id: "new_comment" ) do
-          %ul
-            %li
-              %textarea.contents__comment__text{:cols => "30", :name => "text", :placeholder => "コメントする", :rows => "2"}
-            %li
-              %input.contents__comment__botton{:type => "submit", :value => "comment"}/
 
-            .contents__comment__index
-              %h4 ＜コメント一覧＞
-              - if @comments
-                - @comments.each do |comment|
-                  %p
-                    %strong.contents__comment__index__text
-                      = link_to comment.user.name, "/users/#{comment.user_id}",:style=>"color:#2cb696;"
-                      ：
-                    = comment.text
-                    .contents__comment__index__delete
-                    - if comment.user == current_user
-                      %p= link_to '削除', post_text_comment_path(comment.post_text_id, comment.id), method: :delete, remote: true
 
   .footer
     %ul.footer__lists
