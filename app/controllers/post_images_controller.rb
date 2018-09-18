@@ -34,7 +34,8 @@ class PostImagesController < ApplicationController
   def show
     @post_image = PostImage.find(params[:id])
     # @comments = @post_image.comments.includes(:user)
-    @like = Like.create(user_id: current_user.id, post_image_id: params[:post_image_id])
+    # @like = Like.create(user_id: current_user.id, post_image_id: params[:post_image_id])
+    @comments = @post_image.comments.includes(:user)
   end
 
 
