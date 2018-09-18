@@ -1,45 +1,250 @@
-.post__image
-  .post__image__header
-    .post__image__header__center
+.post__text
+  .post__text__header
+    .post__text__header__center
       = link_to  do
         %img{:alt => "note", :src => "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg"}/
 
-  .post__image__contents__center
-    = form_for @post_image do |f|
-      = f.label :image, class: 'post__image__contents__center__img' do
-        = fa_icon ("image 5x")
-        = f.file_field :image, class: 'post__image__contents__center__upload'
-        = image_tag @post_image.image, size: "500x400", alt: "", id: :image_prev if @post_image.image?
-        %p
+.contents__markdown
+  = form_for @post_image do |f|
+    .form-group
+      = f.text_field :title , class: 'form-control', placeholder: 'タイトルを入力してください'
+    #editor
+      = f.text_area :image_description do
+        %textarea#input{:debounce => "100", :name => "post_image[image_description]", "v-model" => "input", placeholder: '本文を入力して下さい'}
+        / = f.text_area{:debounce => "100", :name => "image_description", "v-model" => "input", placeholder: '本文を入力して下さい', id ="input"}
 
-          <script type="text/javascript">
-          $(function() {
-          function readURL(input) {
-          if (input.files && input.files[0]) {
-          var reader = new FileReader();
-          reader.onload = function (e) {
-          $('#image_prev').attr('src', e.target.result);
-          }
-          reader.readAsDataURL(input.files[0]);
-          }
-          }
-          $(".post__image__contents__center__upload").change(function(){
-          readURL(this);
-          });
-          });
+        #output{"v-html" => "input | marked"}
+
+
+    .form-group
+      .form-group__icon
+        = f.label :image, class: 'post__text__contents__center__img' do
+          = fa_icon ("image 5x")
+          = f.file_field :image, class: 'post__text__contents__center__upload'
+          = f.hidden_field :image_cache
+
+          <script>
+          $( '.post__text__contents__center__upload' ).change( function () {
+          var selectedFile = this.files[0];
+          // ここまではFile APIを使わない場合と同じ
+
+          // ↓"FileReader"オブジェクトを生成し変数fileReaderに格納
+          var fileReader = new FileReader();
+
+          // ↓fileReaderにファイルが読み込まれた後（ onload ）の動作を定義
+          fileReader.onload = function( event ) {
+          // ロード時の各種情報はonloadの引数（この場合はevent）に格納される
+          // ロードされた画像ファイルのData URIスキームは event.target.result に格納される
+          // ↓変数loadedImageUriに格納
+          var loadedImageUri = event.target.result;
+
+          // ↓取得した画像ファイルのData URIスキームを元に画像を表示（imgのsrcに指定するだけ！）
+          $( '.image-preview' ).html( '<img src="' + loadedImageUri + '">' );
+          };
+
+          // ↓画像読み込みを実行。"FileReader"の"readAsDataURL"関数を使う
+          // 引数はユーザーが入力したファイルのオブジェクト（＝ selectedFile ＝ this.files[0]）
+          fileReader.readAsDataURL( selectedFile );
+          } );
           </script>
+          .image-preview
+    .form-group
+      .form-group__button
+      = f.submit "投稿する", class: 'post__text__contents__center__submit__botton'
+      = link_to "キャンセル", root_path,class: 'post__text__contents__center__submit__botton'
 
-      .post__image__contents__center__title
-        = f.text_field :title, class: 'post__image__contents__center__title__image', placeholder: 'タイトルを入力'
+      <script type="text/javascript">
+      window.onload = function() {
+      new Vue({
+      el: '#editor',
+      data: {
+      input: '@post_image.image_description',
+      },
+      filters: {
+      marked: marked,
+      },
+      });
+      };
+      </script>
 
-        = f.text_area :image_description, class: 'post__image__contents__center__textarea__text', placeholder: 'ノート本文'
+  / .post__text__contents__center
+  /   = form_for @post_image do |f|
+  /     = f.label :image, class: 'post__text__contents__center__img' do
+  /       = fa_icon ("image 5x")
+  /       = f.file_field :image, class: 'post__text__contents__center__upload'
+  /       = f.hidden_field :image_cache
+  /       %p
+  /         = f.check_box :remove_image
+  /         画像を削除する
 
-      .post__image__contents__center__submit
-        = f.submit "編集する", class: 'post__image__contents__center__submit__botton'
-        = link_to "キャンセル", root_path,class: 'post__image__contents__center__submit__botton'
+  /         <script>
+  /         $( '.post__text__contents__center__upload' ).change( function () {
+  /         var selectedFile = this.files[0];
+  /         // ここまではFile APIを使わない場合と同じ
+
+  /         // ↓"FileReader"オブジェクトを生成し変数fileReaderに格納
+  /         var fileReader = new FileReader();
+
+  /         // ↓fileReaderにファイルが読み込まれた後（ onload ）の動作を定義
+  /         fileReader.onload = function( event ) {
+  /         // ロード時の各種情報はonloadの引数（この場合はevent）に格納される
+  /         // ロードされた画像ファイルのData URIスキームは event.target.result に格納される
+  /         // ↓変数loadedImageUriに格納
+  /         var loadedImageUri = event.target.result;
+
+  /         // ↓取得した画像ファイルのData URIスキームを元に画像を表示（imgのsrcに指定するだけ！）
+  /         $( '.post__text__contents__center__header-image-preview' ).html( '<img src="' + loadedImageUri + '">' );
+  /         };
+
+  /         // ↓画像読み込みを実行。"FileReader"の"readAsDataURL"関数を使う
+  /         // 引数はユーザーが入力したファイルのオブジェクト（＝ selectedFile ＝ this.files[0]）
+  /         fileReader.readAsDataURL( selectedFile );
+  /         } );
+  /         </script>
+
+  /     .post__text__contents__center__header-image-preview
+
+  /     .post__text__contents__center__title
+  /       = f.text_field :title, class: 'post__text__contents__center__title__text', placeholder: 'タイトルを入力'
 
 
-    .post__image__contents__right
-      .post__image__contents__right__box
+  /     .post__text__contents__center__textarea
+  /       / #editor
+  /       = f.text_area :image_description, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
+
+  /     .post__text__contents__center__submit
+  /       = f.submit "投稿する", class: 'post__text__contents__center__submit__botton'
+  /       = link_to "キャンセル", root_path,class: 'post__text__contents__center__submit__botton'
+
+
+
+
+  / .post__text__contents__right
+  /   .post__text__contents__right__box
+  /     = form_for @post_image, :url => {:action => :create} do |f|
+  /       .form-group
+  /         = f.label :image, class: 'post__text__contents__center__img' do
+  /           = fa_icon ("image 5x")
+  /           = f.file_field :image, class: 'post__text__contents__center__upload'
+  /           = f.hidden_field :image_cache
+  /       <script>
+  /       $( '.post__text__contents__center__upload' ).change( function () {
+  /       var selectedFile = this.files[0];
+  /       // ここまではFile APIを使わない場合と同じ
+
+  /       // ↓"FileReader"オブジェクトを生成し変数fileReaderに格納
+  /       var fileReader = new FileReader();
+
+  /       // ↓fileReaderにファイルが読み込まれた後（ onload ）の動作を定義
+  /       fileReader.onload = function( event ) {
+  /       // ロード時の各種情報はonloadの引数（この場合はevent）に格納される
+  /       // ロードされた画像ファイルのData URIスキームは event.target.result に格納される
+  /       // ↓変数loadedImageUriに格納
+  /       var loadedImageUri = event.target.result;
+
+  /       // ↓取得した画像ファイルのData URIスキームを元に画像を表示（imgのsrcに指定するだけ！）
+  /       $( '.post__text__contents__center__header-image-preview' ).html( '<img src="' + loadedImageUri + '">' );
+  /       };
+
+  /       // ↓画像読み込みを実行。"FileReader"の"readAsDataURL"関数を使う
+  /       // 引数はユーザーが入力したファイルのオブジェクト（＝ selectedFile ＝ this.files[0]）
+  /       fileReader.readAsDataURL( selectedFile );
+  /       } );
+  /       </script>
+
+  /       .post__text__contents__center__header-image-preview
+
+  /       .form-group
+  /         = f.text_field :title , class: 'form-control', placeholder: 'タイトルを入力してください'
+  /       .form-group
+  /         #editor
+  /           %textarea.form-control{:debounce => "50", :name => "post[image_description]", :rows => "10", "v-model" => "input", placeholder: 'ノート本文'}
+
+  /           %div{id='output' "v-html" => "input | marked", class: 'markdown'}
+  /       .fotm-group
+  /         = f.submit "投稿する", class: 'post__text__contents__center__submit__botton'
+  /         = link_to "キャンセル", root_path,class: 'post__text__contents__center__submit__botton'
+
+  /         <script type="text/javascript">
+  /         window.onload = function() {
+  /         new Vue({
+  /         el: '#editor',
+  /         data: {
+  /         input: '',
+  /         },
+  /         filters: {
+  /         marked: marked,
+  /         },
+  /         });
+  /         };
+  /         </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/ .post__image
+/   .post__image__header
+/     .post__image__header__center
+/       = link_to  do
+/         %img{:alt => "note", :src => "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg"}/
+
+/   .post__image__contents__center
+/     = form_for @post_image do |f|
+/       = f.label :image, class: 'post__image__contents__center__img' do
+/         = fa_icon ("image 5x")
+/         = f.file_field :image, class: 'post__image__contents__center__upload'
+/         = image_tag @post_image.image, size: "500x400", alt: "", id: :image_prev if @post_image.image?
+/         %p
+
+/           <script type="text/javascript">
+/           $(function() {
+/           function readURL(input) {
+/           if (input.files && input.files[0]) {
+/           var reader = new FileReader();
+/           reader.onload = function (e) {
+/           $('#image_prev').attr('src', e.target.result);
+/           }
+/           reader.readAsDataURL(input.files[0]);
+/           }
+/           }
+/           $(".post__image__contents__center__upload").change(function(){
+/           readURL(this);
+/           });
+/           });
+/           </script>
+
+/       .post__image__contents__center__title
+/         = f.text_field :title, class: 'post__image__contents__center__title__image', placeholder: 'タイトルを入力'
+
+/         = f.text_area :image_description, class: 'post__image__contents__center__textarea__text', placeholder: 'ノート本文'
+
+/       .post__image__contents__center__submit
+/         = f.submit "編集する", class: 'post__image__contents__center__submit__botton'
+/         = link_to "キャンセル", root_path,class: 'post__image__contents__center__submit__botton'
+
+
+/     .post__image__contents__right
+/       .post__image__contents__right__box
 
 

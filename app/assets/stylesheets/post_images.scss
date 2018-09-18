@@ -164,6 +164,132 @@
 }
 
 
+// post_image/new
+.post__text{
+  &__header{
+    height: 100px;
+    width: 100%;
+    border-bottom: 1px solid;
+    color: #787c7b;
+    &__center{
+      text-align: center;
+      line-height: 100px;
+      // margin-top: 30px;
+      position: relative;
+      left: 48%;
+      float: left;
+      &__textarea{
+        font-size: 15px;
+      }
+    }
+    &__right{
+      ul{
+        li{
+          float: right;
+          position: relative;
+          padding-top: 30px;
+        }
+      }
+      &__cancel{
+        &__botton__submit{
+          height: 40px;
+          width: 180px;
+          border-radius: 8px;
+          background-color: $base_color;
+          margin-right: 16px;
+          line-height: 2.5em;
+          text-align: center;
+          font-size: 15px;
+          color: white;
+        }
+      }
+      &__post{
+        &__botton{
+          &__submit{
+            height: 40px;
+            width: 180px;
+            border-radius: 8px;
+            background-color: $base_color;
+            margin-right: 16px;
+            line-height: 2.5em;
+            text-align: center;
+            font-size: 15px;
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
+.post__text__contents__right{
+
+  .form-group{
+    textarea.form-control{
+      font-size: 30px;
+      .markdown{
+        P{
+          margin-top: 100px;
+          float: right;
+        }
+      }
+    }
+  }
+}
+
+// image/new
+.contents__markdown{
+  #editor{
+    #post_image_image_description{
+      height: 100px;
+      width: 50vw;
+    }
+    #input, #output {
+      display: block;
+      position: absolute;
+      top: 0px;
+      width: 50vw;
+      // height:50vh;
+      padding: 20px;
+      outline: none;
+      // border: 1px solid;
+    }
+    #input {
+      margin-top: 150px;
+      left: 0px;
+      height: 100px;
+      // border-right: 1px solid #eee;
+    }
+    #output {
+      margin-top: 100px;
+      right: 0px;
+      font-size: 40px;
+      height: 100vh;
+    }
+  }
+  .form-group{
+    .form-control{
+      border-style: none;
+      height: 50px;
+      padding-left: 20px;
+      width: 50vw;
+    }
+    &__icon{
+      width: 50vw;
+      margin-top: 110px;
+      .image-preview{
+        img{
+          height: 400px;
+          width: 500px;
+        }
+      }
+    }
+    &__button{
+
+    }
+  }
+
+
+}
 
 
 
