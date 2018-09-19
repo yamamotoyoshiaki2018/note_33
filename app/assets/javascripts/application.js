@@ -16,4 +16,3 @@
 //= require bootstrap-sprockets
 //= require bootstrap-tagsinput.min
 //= require_tree .
-//= require ckeditor/init
