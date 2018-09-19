@@ -33,6 +33,7 @@ class PostTextsController < ApplicationController
   def show
       @post_text = PostText.find(params[:id])
       @comments = @post_text.comments.includes(:user)
+      @magazines = Magazine.where(magazine_author_id: current_user.id)
   end
 
   def destroy
