@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180916120311) do
 
   create_table "follows", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
-    t.integer  "followed_id", null: false
+    t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["followed_id"], name: "index_follows_on_followed_id", using: :btree

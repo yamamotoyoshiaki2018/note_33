@@ -1,0 +1,237 @@
+.magazine-new-page {
+  height: 100%;
+  width: 580px;
+  margin: 60px calc( (100% - 582px) / 2);
+  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Hiragino Kaku Gothic ProN, "ヒラギノ角ゴ ProN W3", Arial, "メイリオ", Meiryo, sans-serif;
+  &__header {
+    &__image {
+    height: 300px;
+    width: 580px;
+    background-color: $base_color;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    position: relative;
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      color: rgba(246,245,245,0);
+      content: '';
+      cursor: pointer;
+    }
+    p {
+      position: absolute;
+      color: white;
+      top: 50%;
+      left: 50%;
+      -ms-transform: translate(-50%,-50%);
+      -webkit-transform: translate(-50%,-50%);
+      transform: translate(-50%,-50%);
+      margin:0;
+      padding:0;
+    }
+      &__select {
+        color: white;
+        opacity: 0.7;
+        text-align: center;
+        line-height: 24px;
+        font-size: 12px;
+      }
+    }
+    &__contents {
+      height: 300px;
+      width: 580px;
+      margin: 0 auto;
+      background-color: white;
+        &__top {
+          height: 102px;
+          width: 580px;
+          line-height: 30px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          background-color: white;
+          float: left;
+          input#magazine_magazine_title {
+              width: 580px;
+              font-size: 24px;
+              padding-bottom: 10px;
+              padding-top: 10px;
+              padding-left: 10px;
+              border-radius: 3px;
+              border: 1px solid #eee;
+          }
+        }
+        &__top-show {
+          width: 580px;
+          line-height: 30px;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          background-color: white;
+          float: left;
+          font-size: 24px;
+        }
+        &__middle {
+          height: 145px;
+          width: 580px;
+          background-color: white;
+          margin-bottom: 5px;
+          font-size: 14px;
+          line-height: 24px;
+          float: left;
+          textarea#magazine_magazine_description {
+              width: 580px;
+              height: 123px;
+              padding-bottom: 10px;
+              padding-top: 10px;
+              padding-left: 10px;
+              border-radius: 3px;
+              border: 1px solid #eee;
+          }
+        }
+        &__middle-show {
+          width: 580px;
+          background-color: white;
+          margin-bottom: 5px;
+          font-size: 14px;
+          line-height: 24px;
+          float: left;
+        }
+        &__bottom {
+          height: 70px;
+          width: 580px;
+          background-color: white;
+          margin-top: 15px;
+          margin-bottom: 5px;
+          font-size: 14px;
+          line-height: 24px;
+          float: left;
+          &__cancel-btn {
+            height: 70px;
+            width: 150px;
+            background-color: white;
+            float: left;
+          }
+          &__submit-btn{
+            height: 70px;
+            width: 150px;
+            background-color: white;
+            float: right;
+          }
+          &__edit-link-btn{
+            height: 50px;
+            width: 150px;
+            float: right;
+            background-color: #2cb696;
+            border-radius: 4px;
+            color: #fff;
+            a {
+              text-decoration: none;
+              color: #fff;
+            }
+            a:hover {
+              color: #fff;
+            }
+          }
+        }
+
+    }
+  }
+
+  .btn {
+    display: inline-block;
+    height: 50px;
+    width: 150px;
+    padding: 0 30px;
+    line-height: 50px;
+    letter-spacing: 1px;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+  }
+
+  .cancel-btn {
+    display: inline-block;
+    height: 48px;
+    width: 138px;
+    padding: 0 30px;
+    line-height: 50px;
+    letter-spacing: 1px;
+    text-align: center;
+    border: 1px solid gray;
+    border-radius: 4px;
+    color: #eee;
+    background-color: white;
+    margin-left: 280px;
+  }
+
+  .cancel-btn a {
+    text-decoration: none;
+    color: gray;
+      }
+
+  input[type='submit'] {
+    float: right;
+    color: #fff;
+    background-color: #2cb696;
+  }
+
+}
+
+.magazine-new-page__header__contents__right__top.field-input {
+    width: 750px;
+}
+
+.modal-magazine-list {
+  height: 100px;
+  &__header-image {
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+    float: left;
+    img {
+      height: 80px;
+      width: 80px;
+      border: none;
+      border-radius: 1px;
+      margin: 0 auto;
+    }
+    p {
+      height: 80px;
+      width: 80px;
+      background-color: $base_color;
+      border: none;
+      border-radius: 1px;
+    }
+  }
+  &__name {
+    height: 80px;
+    width: 300px;
+    margin: 10px;
+    vertical-align: middle;
+    float: left;
+    font-size: 14px;
+    line-height: 80px;
+  }
+  &__add-btn {
+    height: 80px;
+    width: 110px;
+    margin: 10px;
+    vertical-align: middle;
+    float: right;
+    font-size: 14px;
+    line-height: 80px;
+    .add {
+      border: 1px solid #ddd;
+      color: #2cb696;
+    }
+  }
+  &__new {
+    height: 80px;
+    margin: 20px;
+    float: left;
+    line-height: 80px;
+  }
+}
+
