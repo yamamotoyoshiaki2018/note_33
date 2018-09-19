@@ -1,3 +1,6 @@
+
+
+/ - @post_texts.each do |post_text|
 .contents__container
   .contents__container__top
     .contents__container__top__icon
@@ -14,12 +17,15 @@
   .contents__container__center
     .contents__container__center__headerimg
       - if post_text.header_image.present?
-        = image_tag post_text.header_image, size: "578x300", alt: ""
+        = image_tag post_text.header_image, size: "580x300", alt: ""
     .contents__container__center__title
       = post_text.title
     .contents__container__center__text
-      - if post_text.text.present?
-        = simple_format(post_text.text)
+      / - if post_text.text.present?
+      /   = simple_format(post_text.text)
+      / = truncate(post_text.text)
+      = link_to '.....詳細を見る', post_text_path(post_text.id)
+
     .contents__container__center__img
       - if post_text.image.present?
         = image_tag post_text.image, size: "", alt: "" , :class =>".contents__container__center__img__2nd"
@@ -29,43 +35,33 @@
       .contents__container__center__bottom__left
         %ul
           %li
-            = fa_icon ("heart 2x")
+            #function_like
+              = render partial: "post_texts/like", locals: { post_text: post_text, like: @like }
           %li
-            = fa_icon ("arrow-right 2x")
-          %li
-            %a.link-green{"data-target" => "#magazine-modal", "data-toggle" => "modal"}マガ
-      .contents__container__center__bottom__right
-        %ul.nav
-          %li.contents__container__center__bottom__right__icon
-            = fa_icon ("ellipsis-h 2x")
-            %ul
-              %li.contents__container__center__bottom__right__lists
-                = link_to 'コメントする', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :get
-              %li
-                = link_to '詳細', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :get
-              %li
-                - if user_signed_in? && current_user.id == post_text.user_id
-                  = link_to '編集', "/post_texts/#{post_text.id}/edit",:style=>"color:white;", method: :get
-              %li
-                - if user_signed_in? && current_user.id == post_text.user_id
-                  = link_to '削除', "/post_texts/#{post_text.id}",:style=>"color:white;", method: :delete
+            .btn-group
+              %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("arrow-right 2x")
+              .dropdown-menu
+                .dropdown-item
+                  %i.fab.fa-facebook.fa-2x
+                  %a{:href => "https://www.facebook.com/"} Facebook
 
-  #magazine-modal.modal.fade{:role => "dialog"}
-    .modal-dialog
-      .modal-content
-        .modal-header
-          %button.close{"data-dismiss" => "modal", :type => "button"} ×
-          %h4.modal-title マガジンリスト
-        - if user_signed_in?
-          .modal-body
-            - @magazines.each do |magazine|
-              .modal-magazine-list
-                .modal-magazine-list__header-image
-                  - if magazine.magazine_header_image?
-                    = image_tag magazine.magazine_header_image
-                  - else
-                    %p
-                .modal-magazine-list__name
-                  = magazine.magazine_title
-                .modal-magazine-list__add-btn
-                  = render partial: 'magazines/add_btn', locals: { magazine: magazine, post_text: post_text }
+                .dropdown-item
+                  %i.fab.fa-twitter-square.fa-2x
+                  %a{:href => "https://twitter.com/"} Twitter
+
+
+          %li
+            = fa_icon ("plus 2x")
+      .contents__container__center__bottom__right
+        .btn-group
+          %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("ellipsis-h 2x")
+          .dropdown-menu
+            .dropdown-item
+            = link_to "詳細", post_text_path(post_text.id), method: :get
+            .dropdown-item
+            - if user_signed_in? && current_user.id == post_text.user_id
+              = link_to '編集', "/post_texts/#{post_text.id}/edit", method: :get
+            .dropdown-item
+            - if user_signed_in? && current_user.id == post_text.user_id
+              = link_to '削除', "/post_texts/#{post_text.id}", method: :delete
+        /
