@@ -26,14 +26,14 @@ class PostTextsController < ApplicationController
       user_id: current_user.id)
     @post_text.tag_list.add(note_params[:tag_list], parse: true)
     @post_text.save
-    redirect_to post_texts_path
-    # redirect_to root_path
+    note = Note.new(user_id: current_user.id, post_text_id: @post_text.id)
+    note.save
+    redirect_to root_path
   end
 
   def show
       @post_text = PostText.find(params[:id])
       @comments = @post_text.comments.includes(:user)
-      @magazines = Magazine.where(magazine_author_id: current_user.id)
   end
 
   def destroy

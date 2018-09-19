@@ -51,7 +51,7 @@
       .contents__container__center
         .contents__container__center__headerimg
           - if @post_text.header_image.present?
-            = image_tag @post_text.header_image, size: "580x300", alt: ""
+            = image_tag @post_text.header_image, size: "576x300", alt: ""
         .contents__container__center__title
           = @post_text.title
         .contents__container__center__text
@@ -59,15 +59,14 @@
             = simple_format(@post_text.text)
         .contents__container__center__img
           - if @post_text.image.present?
-            = image_tag @post_text.image, size: "470x300", alt: "" , :class =>".contents__container__center__img__2nd"
+            = image_tag @post_text.image, size: "466x300", alt: "" , :class =>".contents__container__center__img__2nd"
         .contents__container__center__tags
           = render 'post_texts/tag_list', tag_list: @post_text.tag_list
         .contents__container__center__bottom
           .contents__container__center__bottom__left
             %ul
               %li
-                %a.link-green{"data-target" => "#magazine-modal", "data-toggle" => "modal"}マガ
-                / = fa_icon ("plus 2x")
+                %i.fas.fa-plus.link-green{"data-target" => "#magazine-modal", "data-toggle" => "modal"}
           .contents__container__center__bottom__right
             .btn-group
               %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
@@ -110,25 +109,26 @@
       %li.footer__list
         = link_to "クリエーターの推薦", root_path,:style=>"color:#787c7b;"
 
-  / #magazine-modal.modal.fade{:role => "dialog"}
-  /   .modal-dialog
-  /     .modal-content
-  /       .modal-header
-  /         %button.close{"data-dismiss" => "modal", :type => "button"} ×
-  /         %h4.modal-title マガジンリスト
-  /       - if user_signed_in?
-  /         .modal-body
-  /           - @magazines.each do |magazine|
-  /             .modal-magazine-list
-  /               .modal-magazine-list__header-image
-  /                 - if magazine.magazine_header_image?
-  /                   = image_tag magazine.magazine_header_image
-  /                 - else
-  /                   %p
-  /               .modal-magazine-list__name
-  /                 = magazine.magazine_title
-  /               .modal-magazine-list__add-btn
-  /                 = render partial: 'magazines/add_btn', locals: { magazine: magazine, post_text: @post_text }
-  /           .modal-magazine-list
-  /             .modal-magazine-list__new
-  /               = link_to "マガジンを新規作成して追加", new_magazine_path(@post_text)
+  #magazine-modal.modal.fade{:role => "dialog"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"} ×
+          %h4.modal-title マガジンリスト
+        - if user_signed_in?
+          .modal-body
+            - @magazines.each do |magazine|
+              .modal-magazine-list
+                .modal-magazine-list__header-image
+                  - if magazine.magazine_header_image?
+                    = image_tag magazine.magazine_header_image
+                  - else
+                    %p
+                .modal-magazine-list__name
+                  = magazine.magazine_title
+                .modal-magazine-list__add-btn
+                  = render partial: 'add_btn', locals: { magazine: magazine, post_text: @post_text }
+            .modal-magazine-list
+              .modal-magazine-list__new
+                = link_to "マガジンを新規作成して追加", new_magazine_path(@post_text)
+

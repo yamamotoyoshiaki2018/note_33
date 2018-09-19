@@ -40,6 +40,8 @@
 
         / .contents__container__center__tags
         /   = render 'post_images/tag_list', tag_list: post_image.tag_list
+        .contents__container__center__tags
+          = render 'post_images/tag_list', tag_list: post_image.tag_list
         .contents__container__center__bottom
           .contents__container__center__bottom__left
             %ul

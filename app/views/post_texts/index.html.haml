@@ -18,8 +18,6 @@
                   = link_to "イメージ投稿", "/post_images/new",:style=>"color:white;"
 
 
-
-
         %li
           .header__upper__lists__user-icon
             %ul.nav
@@ -46,12 +44,6 @@
           = link_to "ユーザー検索", users_path
           = fa_icon ("search 2x")
           = link_to "タグ検索", users_path
-
-          / %form.header__upper__lists__search{:action => "#", :method => "get"}
-          /   %input.header__upper__lists__search__text{:placeholder => "キーワードや作品名で検索", :size => "25", :type => "text"}/
-          /   %input.header__upper__lists__search__botton{:type => "submit", :value => "🔍"}/
-
-
 
 
     .header__lower
@@ -95,33 +87,33 @@
             = link_to "犬", root_path,:style=>"color:#787c7b;"
 
 
-  .contents
-    - @post_texts.each do |post_text|
-      / = render partial: "content", locals: { post_text: post_text, like: @like }
-      .contents__container
-        .contents__container__top
-          .contents__container__top__icon
-            - if post_text.user.avatar_image?
-              = image_tag post_text.user.avatar_image
-            - else
-              = fa_icon ("smile 2x")
-          %ul
-            %li
-              .contents__container__top__nickname
-                = link_to post_text.user.name, user_path(post_text.user), class: "link-green"
-              .contents__container__top__date
-                = post_text.created_at.strftime("%Y年%m月%d日 %H時%M分")
-        .contents__container__center
-          .contents__container__center__headerimg
-            - if post_text.header_image.present?
-              = image_tag post_text.header_image, size: "580x300", alt: ""
-          .contents__container__center__title
-            = post_text.title
-          .contents__container__center__text
-            / - if post_text.text.present?
-            /   = simple_format(post_text.text)
-            / = truncate(post_text.text)
-            = link_to '.....詳細を見る', post_text_path(post_text.id)
+.contents
+  - @post_texts.each do |post_text|
+    / = render partial: "content", locals: { post_text: post_text, like: @like }
+    .contents__container
+      .contents__container__top
+        .contents__container__top__icon
+          - if post_text.user.avatar_image?
+            = image_tag post_text.user.avatar_image
+          - else
+            = fa_icon ("smile 2x")
+        %ul
+          %li
+            .contents__container__top__nickname
+              = link_to post_text.user.name, user_path(post_text.user), class: "link-green"
+            .contents__container__top__date
+              = post_text.created_at.strftime("%Y年%m月%d日 %H時%M分")
+      .contents__container__center
+        .contents__container__center__headerimg
+          - if post_text.header_image.present?
+            = image_tag post_text.header_image, size: "580x300", alt: ""
+        .contents__container__center__title
+          = post_text.title
+        .contents__container__center__text
+          / - if post_text.text.present?
+          /   = simple_format(post_text.text)
+          / = truncate(post_text.text)
+          = link_to '.....詳細を見る', post_text_path(post_text.id)
 
           .contents__container__center__img
             - if post_text.image.present?
