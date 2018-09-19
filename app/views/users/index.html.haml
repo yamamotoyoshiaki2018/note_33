@@ -6,8 +6,17 @@
           %img{:alt => "note", :src => "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg"}/
       %ul.header__upper__lists
         %li
-          %form.header__upper__lists__note-botton{:action => "/post_images/new", :method => "get"}
-            %input.header__upper__lists__note-botton__submit{:type => "submit", :value => "ノートを投稿"}/
+          %form.header__upper__lists__note-botton
+          / {:action => "/post_texts/new", :method => "get"}
+          %ul.nav
+            %li
+              %input.header__upper__lists__note-botton__submit{:type => "button", :value => "ノートを投稿"}/
+              %ul
+                %li
+                  = link_to "テキスト投稿", "/post_texts/new",:style=>"color:white;"
+                %li
+                  = link_to "イメージ投稿", "/post_images/new",:style=>"color:white;"
+
         %li
           .header__upper__lists__user-icon
             %ul.nav
