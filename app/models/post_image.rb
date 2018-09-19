@@ -8,5 +8,8 @@ class PostImage < ApplicationRecord
    likes.find_by(user_id: user_id)
   end
 
+  acts_as_taggable
+  acts_as_taggable_on :topics
+
   mount_uploader :image, ImageUploader
 end
