@@ -19,7 +19,7 @@ class PostImagesController < ApplicationController
     @post_image.save
     note = Note.new(user_id: current_user.id, post_image_id: @post_image.id)
     note.save
-    redirect_to post_images_path
+    redirect_to root_path
   end
 
   def destroy
