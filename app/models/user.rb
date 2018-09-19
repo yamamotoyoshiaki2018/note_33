@@ -10,7 +10,7 @@ class User < ApplicationRecord
   end
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  has_many :notes
   has_many :post_texts
   has_many :post_images
   has_many :comments
