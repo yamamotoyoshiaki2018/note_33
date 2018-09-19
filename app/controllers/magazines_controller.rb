@@ -1,5 +1,10 @@
 class MagazinesController < ApplicationController
 
+  def index
+    @magazine = Magazine.find(params[:id])
+    @magazines = Magazine.where(magazine_author_id: @user.id)
+  end
+
   def new
     @magazine = Magazine.new
   end
