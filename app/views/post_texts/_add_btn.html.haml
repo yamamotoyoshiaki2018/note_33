@@ -1,7 +1,0 @@
-- if post_text
-  = "追加済"
-- else
-  = form_for magazine do |f|
-    = hidden_field_tag :note_id, note.id
-    = button_tag( class: ".modal-magazine-list__add-btn add") do
-      = content_tag :span, " 追加する"
