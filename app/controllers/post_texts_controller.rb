@@ -57,6 +57,7 @@ class PostTextsController < ApplicationController
   end
 
 
+
   private
   def note_params
     params.require(:post_text).permit(

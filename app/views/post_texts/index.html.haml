@@ -135,12 +135,23 @@
                   #function_like
                     = render partial: "post_texts/like", locals: { post_text: post_text, like: @like }
                 %li
-                  = fa_icon ("arrow-right 2x")
+                  .btn-group
+                    %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("arrow-right 2x")
+                    .dropdown-menu
+                      .dropdown-item
+                        %i.fab.fa-facebook.fa-2x
+                        %a{:href => "https://www.facebook.com/"} Facebook
+
+                      .dropdown-item
+                        %i.fab.fa-twitter-square.fa-2x
+                        %a{:href => "https://twitter.com/"} Twitter
+
+
                 %li
                   = fa_icon ("plus 2x")
             .contents__container__center__bottom__right
               .btn-group
-                %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
+                %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("ellipsis-h 2x")
                 .dropdown-menu
                   .dropdown-item
                   = link_to "詳細", post_text_path(post_text.id), method: :get

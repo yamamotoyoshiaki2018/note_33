@@ -28,9 +28,6 @@
             = image_tag post_image.image, size: "580x300", alt: ""
             .contents__container__center__headerimg__title
               = post_image.title
-
-
-
         / .contents__container__center__text
         /   - if post_image.text.present?
         /     = simple_format(post_text.text)
@@ -50,9 +47,19 @@
                 #function_like
                   = render partial: "post_images/like", locals: { post_image: post_image, like: @like }
               %li
-                = fa_icon ("arrow-right 2x")
-              %li
-                = fa_icon ("plus 2x")
+                .btn-group
+                  %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("arrow-right 2x")
+                  .dropdown-menu
+                    .dropdown-item
+                      %i.fab.fa-facebook.fa-2x
+                      %a{:href => "https://www.facebook.com/"} Facebook
+
+                    .dropdown-item
+                      %i.fab.fa-twitter-square.fa-2x
+                      %a{:href => "https://twitter.com/"} Twitter
+
+                %li
+                  = fa_icon ("plus 2x")
           .contents__container__center__bottom__right
             .btn-group
               %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
@@ -65,12 +72,6 @@
                 .dropdown-item
                 - if user_signed_in? && current_user.id == post_image.user_id
                   = link_to '削除', "/post_images/#{post_image.id}", method: :delete
-
-
-
-
-
-
 
 
 
