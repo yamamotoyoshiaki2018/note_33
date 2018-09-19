@@ -424,7 +424,57 @@ h4 {
   }
 }
 
-
+.modal-magazine-list {
+  height: 100px;
+  &__header-image {
+    height: 80px;
+    width: 80px;
+    margin: 10px;
+    float: left;
+    img {
+      height: 80px;
+      width: 80px;
+      border: none;
+      border-radius: 1px;
+      margin: 0 auto;
+    }
+    p {
+      height: 80px;
+      width: 80px;
+      background-color: $base_color;
+      border: none;
+      border-radius: 1px;
+    }
+  }
+  &__name {
+    height: 80px;
+    width: 300px;
+    margin: 10px;
+    vertical-align: middle;
+    float: left;
+    font-size: 14px;
+    line-height: 80px;
+  }
+  &__add-btn {
+    height: 80px;
+    width: 110px;
+    margin: 10px;
+    vertical-align: middle;
+    float: right;
+    font-size: 14px;
+    line-height: 80px;
+    .add {
+      border: 1px solid #ddd;
+      color: #2cb696;
+    }
+  }
+  &__new {
+    height: 80px;
+    margin: 20px;
+    float: left;
+    line-height: 80px;
+  }
+}
 
 
 

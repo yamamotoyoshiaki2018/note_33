@@ -1,0 +1,13 @@
+.contents
+  .magazine-list
+    .magazine-list__header
+      %h4 マガジンリスト
+        - @magazines.each do |magazine|
+          .magazine-list__content
+            .magazine-list__content__left
+              - if magazine.magazine_header_image?
+                = image_tag magazine.magazine_header_image
+              - else
+                %p
+            .magazine-list__content__title
+              = link_to magazine.magazine_title, root_path

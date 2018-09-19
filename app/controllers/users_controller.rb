@@ -19,14 +19,21 @@ class UsersController < ApplicationController
     @name = user.name
     @note33_id = user.note33_id
     @self_introduction = user.self_introduction
+  end
 
-    # @tweets = user.tweets.page(params[:page]).per(5).order("created_at DESC")
+  def magazines
+    @user = User.find(params[:id])
+    user = User.find(params[:id])
+    @magazines = Magazine.where(magazine_author_id: user.id)
   end
 
   def show
     @user = User.find(params[:id])
     @name = @user.name
     @note33_id = @user.note33_id
+    user = User.find(params[:id])
+    @notes = Note.where(user_id: user.id).order("created_at DESC")
+    @magazines = Magazine.where(magazine_author_id: user.id)
   end
 
   def followings

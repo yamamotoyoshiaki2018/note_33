@@ -43,7 +43,17 @@
       %li.tabs.current
         %a{href: user_path}ホーム
       %li.tabs
-        %a{href: user_path}マガジン
+        %a{href: magazines_user_path}マガジン
+
+  .contents
+    - @notes.each do |note|
+      - if note.post_text_id
+        = render partial: 'post_texts/post_text', locals: { post_text: note.post_text }
+      - elsif note.post_image_id
+        = render partial: 'post_images/post_image', locals: { post_image: note.post_image }
+
+    / = render partial: magazines_user_path, locals: { post_text: post_text, like: @like }
+
   #follow-modal.modal.fade{:role => "dialog"}
     .modal-dialog
       .modal-content

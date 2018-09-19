@@ -26,3 +26,8 @@
               = link_to "キャンセル", magazine_path
           .magazine-new-page__header__contents__bottom__submit-btn
             = f.submit "更新する", class: 'btn'
+        -if @magazine.magazine_author_id == current_user.id
+          .magazine-new-page__header__contents__bottom__edit-btn
+            = link_to "マガジンを削除する", magazine_path, class: "link-green", method: :delete
+        .magazine-new-page__header__contents__bottom
+          %h4= "ノート一覧"
