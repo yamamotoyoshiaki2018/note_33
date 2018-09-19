@@ -1,11 +1,7 @@
 class PostImagesController < ApplicationController
   def index
+    @post_images = PostImage.includes(:user).order("created_at DESC")
     @like = Like.create(user_id: current_user.id, post_text_id: params[:post_text_id],post_image_id: params[:post_image_id])
-    if params[:tag]
-      @post_images = PostImage.tagged_with(params[:tag]).order("created_at DESC")
-    else
-      @post_images = PostImage.includes(:user).order("created_at DESC")
-    end
   end
 
   def new
@@ -20,7 +16,6 @@ class PostImagesController < ApplicationController
       remove_image: image_params[:remove_image],
       image_cache: image_params[:image_cache],
       user_id: current_user.id)
-    @post_image.tag_list.add(image_params[:tag_list], parse: true)
     @post_image.save
     note = Note.new(user_id: current_user.id, post_image_id: @post_image.id)
     note.save
@@ -41,7 +36,6 @@ class PostImagesController < ApplicationController
     # @comments = @post_image.comments.includes(:user)
     # @like = Like.create(user_id: current_user.id, post_image_id: params[:post_image_id])
     @comments = @post_image.comments.includes(:user)
-    @magazines = Magazine.where(magazine_author_id: current_user.id)
   end
 
 
@@ -65,8 +59,7 @@ class PostImagesController < ApplicationController
       :title,
       :image_description,
       :remove_image,
-      :image_cache,
-      :tag_list
+      :image_cache
       )
   end
 end
