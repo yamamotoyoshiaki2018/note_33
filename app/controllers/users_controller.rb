@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     @notes = Note.where(user_id: user.id).order("created_at DESC")
     @magazines = Magazine.where(magazine_author_id: user.id)
+    @like = Like.create(user_id: current_user.id, post_text_id: params[:post_text_id],post_image_id: params[:post_image_id])
   end
 
   def followings
