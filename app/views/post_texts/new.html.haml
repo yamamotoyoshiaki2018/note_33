@@ -45,6 +45,7 @@
         = f.text_field :title, class: 'post__text__contents__center__title__text', placeholder: 'タイトルを入力'
       .post__text__contents__center__textarea
         = f.cktext_area :text, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
+        / = f.text_area :text, class: 'post__text__contents__center__textarea__text', placeholder: 'ノート本文'
       .form-group
         = f.label :topic_list, "タグ"
         = f.text_field :tag_list, value: @post_text.tag_list.join(','), "data-role" => "tagsinput", class: "form-control", placeholder: "半角スペース区切りで入力"

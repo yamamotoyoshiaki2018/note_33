@@ -10,7 +10,7 @@ class MagazinesController < ApplicationController
   end
 
   def show
-    @magazine = Magazine.find(params[:id])
+    @magazine = Magazine.find(params[:id]).order("updated_at DESC")
   end
 
   def edit
@@ -25,12 +25,13 @@ class MagazinesController < ApplicationController
   end
 
   def create
-    @magazine = Magazine.new
-    @magazine.note << Note.find_by(post_text_id: params[:id])
+    @magazine = Magazine.new(magazine_params)
+
+    # @magazine.note << Note.find_by(post_text_id: params[:id])
 
     # @magazine = Magazine.new(magazine_params)
     if @magazine.save
-      redirect_to root_path, notice: 'マガジンを作成しました'
+      redirect_to magazines_user_path(current_user), notice: 'マガジンを作成しました'
     else
       render :new
     end
