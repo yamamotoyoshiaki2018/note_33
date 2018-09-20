@@ -1,8 +1,8 @@
 class NotesController < ApplicationController
 
   def index
-
-    @like = Like.create(user_id: current_user.id, post_text_id: params[:post_text_id])
+    @like = Like.create(user_id: current_user.id, post_text_id: params[:post_text_id],post_image_id: params[:post_image_id])
+    # @like = Like.create(user_id: current_user.id, post_text_id: params[:post_text_id])
     # if params[:tag]
     #   @post_texts = PostText.tagged_with(params[:tag]).order("created_at DESC")
     # else
