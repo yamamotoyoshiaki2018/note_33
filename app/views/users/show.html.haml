@@ -48,9 +48,9 @@
   .contents
     - @notes.each do |note|
       - if note.post_text_id
-        = render partial: 'post_texts/post_text', locals: { post_text: note.post_text }
+        = render partial: 'post_texts/post_text', locals: { post_text: note.post_text, like: @like}
       - elsif note.post_image_id
-        = render partial: 'post_images/post_image', locals: { post_image: note.post_image }
+        = render partial: 'post_images/post_image', locals: { post_image: note.post_image, like: @like }
 
     / = render partial: magazines_user_path, locals: { post_text: post_text, like: @like }
 
