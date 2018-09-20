@@ -3,11 +3,11 @@
   width: 580px;
   margin: 0 auto;
   border: 1px solid #eee;
-  margin-bottom: 30px;
+  margin-top: 30px;
   border-radius: 3px;
   background-color: white;
   &__top{
-    padding-top: 15px;
+    // padding-top: 15px;
     &__icon{
       float: left;
       line-height: 40px;
@@ -86,9 +86,6 @@
       }
     }
     &__bottom{
-      // i{
-      //   line-height: 50px;
-      // }
       height: 50px;
       width: 550px;
       border-top: 1px solid #eee;
@@ -195,9 +192,11 @@
   }
 }
 .contents__comment{
+  margin-top: 50px;
   ul{
     li{
       text-align: center;
+      margin: 0 auto;
     }
   }
   &__text{
@@ -205,6 +204,7 @@
     width:580px;
     font-size: 12px;
     border-style: none;
+
   }
   &__botton{
     height: 50px;

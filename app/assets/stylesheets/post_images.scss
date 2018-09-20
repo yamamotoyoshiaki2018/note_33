@@ -267,11 +267,12 @@
     }
   }
   .form-group{
+    width: 50vw;
     .form-control{
       border-style: none;
       height: 50px;
       padding-left: 20px;
-      width: 50vw;
+
     }
     &__icon{
       width: 50vw;
@@ -283,12 +284,18 @@
         }
       }
     }
+    .label{
+      height: 30px;
+      width: 30px;
+    }
+    .bootstrap-tagsinput{
+      // width: 685px;
+      margin-bottom: 30px;
+    }
     &__button{
 
     }
   }
-
-
 }
 
 

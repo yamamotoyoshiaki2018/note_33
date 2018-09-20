@@ -26,8 +26,9 @@ class PostTextsController < ApplicationController
       user_id: current_user.id)
     @post_text.tag_list.add(note_params[:tag_list], parse: true)
     @post_text.save
-    redirect_to post_texts_path
-    # redirect_to root_path
+    note = Note.new(user_id: current_user.id, post_text_id: @post_text.id)
+    note.save
+    redirect_to root_path
   end
 
   def show
@@ -55,8 +56,6 @@ class PostTextsController < ApplicationController
     end
     redirect_to post_texts_path
   end
-
-
 
   private
   def note_params
