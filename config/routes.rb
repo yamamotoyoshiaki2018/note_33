@@ -25,8 +25,12 @@ Rails.application.routes.draw do
   resources :follows, only: [:create, :destroy]
 
   get 'tags/:tag', to: 'post_texts#index', as: :tag
-  resources :post_texts
+  resources :post_images, :post_texts
   root to: 'post_texts#index'
+
+  # get 'tags/:tag', to: 'post_images#index', as: :tag
+  # resources :post_images
+  # root to: 'post_images#index'
 
   resources :magazines, only: [:index, :new, :create, :show, :edit, :update, :destroy]
 end

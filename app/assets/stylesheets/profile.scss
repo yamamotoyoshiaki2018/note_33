@@ -216,3 +216,14 @@
 .profile-page__header__contents__right__top.field-input {
     width: 750px;
 }
+.profile-page__header__image__select__preview img, .profile-page__header__image img, .mypage-header-image img {
+  height: 450px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.profile-page__avatar__image__select__preview img {
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}

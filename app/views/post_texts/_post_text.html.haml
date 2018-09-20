@@ -15,14 +15,14 @@
   .contents__container__center
     .contents__container__center__headerimg
       - if post_text.header_image.present?
-        = image_tag post_text.header_image, size: "580x300", alt: ""
+        = image_tag post_text.header_image, alt: ""
     .contents__container__center__title
       = post_text.title
     .contents__container__center__text
       / - if post_text.text.present?
       /   = simple_format(post_text.text)
       / = truncate(post_text.text)
-      = link_to '.....詳細を見る', post_text_path(post_text.id)
+      = link_to '.....詳細を見る', post_text_path(post_text.id), class: "link-green"
 
     .contents__container__center__img
       - if post_text.image.present?

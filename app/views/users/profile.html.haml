@@ -1,3 +1,50 @@
+.wrapper
+  .header
+    .header__upper
+      .header__upper__logo
+        = link_to  root_path do
+          %img{:alt => "note", :src => "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg"}/
+      %ul.header__upper__lists
+        %li
+          %form.header__upper__lists__note-botton
+          / {:action => "/post_texts/new", :method => "get"}
+          %ul.nav
+            %li
+              .header__upper__lists__note-botton__submit
+                = fa_icon("edit") + "ノートを投稿"
+              %ul
+                %li
+                  = link_to "テキスト投稿", "/post_texts/new", class: "link-green"
+                %li
+                  = link_to "イメージ投稿", "/post_images/new", class: "link-green"
+
+        %li
+          .header__upper__lists__user-icon
+            %ul.nav
+              %li.header__upper__lists__user-icon__smile
+                - if current_user.avatar_image?
+                  = image_tag current_user.avatar_image
+                - else
+                  = fa_icon ("smile 3x")
+                %ul
+                  %li
+                    = link_to "マイページ", user_path(current_user),:style=>"color:white;"
+                  %li
+                    = link_to "ノート一覧", post_texts_path,:style=>"color:white;"
+                  %li
+                    = link_to "マガジン一覧", root_path,:style=>"color:white;"
+                  %li
+                    = link_to "画像一覧", post_images_path,:style=>"color:white;"
+                  %li
+                    = link_to "アカウント設定", edit_user_registration_path,:style=>"color:white;"
+                  %li
+                    = link_to "ログアウト", destroy_user_session_path,:style=>"color:#787c7b;", :method => :delete,:style=>"color:white;"
+        %li
+          = fa_icon ("search 2x")
+          = link_to "ユーザー検索", users_path, class: "link-green"
+          = fa_icon ("search 2x")
+          = link_to "タグ検索", users_path, class: "link-green"
+
 .profile-page
   = form_for(current_user) do |f|
     .profile-page__header
@@ -7,7 +54,8 @@
         %p ヘッダー画像を更新
         .profile-page__header__image__select
           = f.label :header_image
-        = f.file_field :header_image, style: "display:none;", multipart: true
+        = f.file_field :header_image, style: "display:none;", multipart: true, class: "profile-page__header__image__select__upload"
+        .profile-page__header__image__select__preview
       .profile-page__header__contents
         .profile-page__header__contents__left
           .profile-page__header__contents__left__box
@@ -20,7 +68,7 @@
                 = fa_icon ("camera")
               .profile-page__header__contents__left__box__image__select
                 = f.label :avatar_image
-              = f.file_field :avatar_image, style: "display:none;"
+              = f.file_field :avatar_image, style: "display:none;", multipart: true, class: "profile-page__avatar__image__select__upload"
         .profile-page__header__contents__right
           .profile-page__header__contents__right__top
             .field-input
@@ -33,3 +81,45 @@
                 = link_to "キャンセル", user_path(current_user)
             .profile-page__header__contents__right__bottom__submit-btn
               = f.submit "更新する", class: 'btn'
+
+          <script>
+          $( '.profile-page__avatar__image__select__upload' ).change( function () {
+          var selectedFile = this.files[0];
+          // ここまではFile APIを使わない場合と同じ
+
+          // ↓"FileReader"オブジェクトを生成し変数fileReaderに格納
+          var fileReader = new FileReader();
+
+          // ↓fileReaderにファイルが読み込まれた後（ onload ）の動作を定義
+          fileReader.onload = function( event ) {
+          // ロード時の各種情報はonloadの引数（この場合はevent）に格納される
+          // ロードされた画像ファイルのData URIスキームは event.target.result に格納される
+          // ↓変数loadedImageUriに格納
+          var loadedImageUri = event.target.result;
+
+          // ↓取得した画像ファイルのData URIスキームを元に画像を表示（imgのsrcに指定するだけ！）
+          $( '.profile-page__avatar__image__select__preview' ).html( '<img src="' + loadedImageUri + '">' );
+          };
+
+          // ↓画像読み込みを実行。"FileReader"の"readAsDataURL"関数を使う
+          // 引数はユーザーが入力したファイルのオブジェクト（＝ selectedFile ＝ this.files[0]）
+          fileReader.readAsDataURL( selectedFile );
+          } );
+          </script>
+
+          <script>
+          $( '.profile-page__header__image__select__upload' ).change( function () {
+
+          var selectedFile = this.files[0];
+          var fileReader = new FileReader();
+
+          fileReader.onload = function( event ) {
+
+          var loadedImageUri = event.target.result;
+
+          $( '.profile-page__header__image__select__preview' ).html( '<img src="' + loadedImageUri + '">' );
+          };
+
+          fileReader.readAsDataURL( selectedFile );
+          } );
+          </script>

@@ -1,64 +1,63 @@
-.contents
-  .contents__container
-    .contents__container__top
-      .contents__container__top__icon
-        - if post_image.user.avatar_image?
-          = image_tag post_image.user.avatar_image
-        - else
-          = fa_icon ("smile 2x")
-      %ul
-        %li
-          .contents__container__top__nickname
-            = link_to post_image.user.name, user_path(post_image.user), class: "link-green"
-          .contents__container__top__date
-            = post_image.created_at.strftime("%Y年%m月%d日 %H時%M分")
-    .contents__container__center
-      .contents__container__center__headerimg
-        - if post_image.image.present?
-          = image_tag post_image.image, size: "580x300", alt: ""
-          .contents__container__center__headerimg__title
-            = post_image.title
-      / .contents__container__center__text
-      /   - if post_image.text.present?
-      /     = simple_format(post_text.text)
-      /     = truncate(post_text.text)
-      /     = link_to '続きを読む', post_text_path(post_text.id)
+.contents__container
+  .contents__container__top
+    .contents__container__top__icon
+      - if post_image.user.avatar_image?
+        = image_tag post_image.user.avatar_image
+      - else
+        = fa_icon ("smile 2x")
+    %ul
+      %li
+        .contents__container__top__nickname
+          = link_to post_image.user.name, user_path(post_image.user), class: "link-green"
+        .contents__container__top__date
+          = post_image.created_at.strftime("%Y年%m月%d日 %H時%M分")
+  .contents__container__center
+    .contents__container__center__headerimg
+      - if post_image.image.present?
+        = image_tag post_image.image, alt: ""
+        .contents__container__center__headerimg__title
+          = post_image.title
+    / .contents__container__center__text
+    /   - if post_image.text.present?
+    /     = simple_format(post_text.text)
+    /     = truncate(post_text.text)
+    /     = link_to '続きを読む', post_text_path(post_text.id)
 
-      / .contents__container__center__img
-      /   - if post_text.image.present?
-      /     = image_tag post_text.image, size: "", alt: "" , :class =>".contents__container__center__img__2nd"
+    / .contents__container__center__img
+    /   - if post_text.image.present?
+    /     = image_tag post_text.image, size: "", alt: "" , :class =>".contents__container__center__img__2nd"
 
-      / .contents__container__center__tags
-      /   = render 'post_images/tag_list', tag_list: post_image.tag_list
-      .contents__container__center__bottom
-        .contents__container__center__bottom__left
-          %ul
+    .contents__container__center__tags
+      = render 'post_images/tag_list', tag_list: post_image.tag_list
+    .contents__container__center__bottom
+      .contents__container__center__bottom__left
+        %ul
+          %li
+            #function_like
+              = render partial: "post_images/like", locals: { post_image: post_image, like: like }
+          %li
+            .btn-group
+              %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("arrow-right 2x")
+              .dropdown-menu
+                .dropdown-item
+                  %i.fab.fa-facebook.fa-2x
+                  %a{:href => "https://www.facebook.com/"} Facebook
+
+                .dropdown-item
+                  %i.fab.fa-twitter-square.fa-2x
+                  %a{:href => "https://twitter.com/"} Twitter
+
             %li
-              #function_like
-                = render partial: "post_images/like", locals: { post_image: post_image, like: like }
-            %li
-              .btn-group
-                %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("arrow-right 2x")
-                .dropdown-menu
-                  .dropdown-item
-                    %i.fab.fa-facebook.fa-2x
-                    %a{:href => "https://www.facebook.com/"} Facebook
-
-                  .dropdown-item
-                    %i.fab.fa-twitter-square.fa-2x
-                    %a{:href => "https://twitter.com/"} Twitter
-
-              %li
-                = fa_icon ("plus 2x")
-        .contents__container__center__bottom__right
-          .btn-group
-            %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
-            .dropdown-menu
-              .dropdown-item
-              = link_to "詳細", post_image_path(post_image.id), method: :get
-              .dropdown-item
-              - if user_signed_in? && current_user.id == post_image.user_id
-                = link_to '編集', "/post_images/#{post_image.id}/edit", method: :get
-              .dropdown-item
-              - if user_signed_in? && current_user.id == post_image.user_id
-                = link_to '削除', "/post_images/#{post_image.id}", method: :delete
+              = fa_icon ("plus 2x")
+      .contents__container__center__bottom__right
+        .btn-group
+          %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"} ●●●
+          .dropdown-menu
+            .dropdown-item
+            = link_to "詳細", post_image_path(post_image.id), method: :get
+            .dropdown-item
+            - if user_signed_in? && current_user.id == post_image.user_id
+              = link_to '編集', "/post_images/#{post_image.id}/edit", method: :get
+            .dropdown-item
+            - if user_signed_in? && current_user.id == post_image.user_id
+              = link_to '削除', "/post_images/#{post_image.id}", method: :delete
