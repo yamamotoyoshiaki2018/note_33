@@ -35,7 +35,7 @@
           %ul
             %li
               #function_like
-                = render partial: "post_images/like", locals: { post_image: post_image, like: @like }
+                = render partial: "post_images/like", locals: { post_image: post_image, like: like }
             %li
               .btn-group
                 %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("arrow-right 2x")

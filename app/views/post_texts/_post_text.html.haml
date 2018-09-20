@@ -1,6 +1,4 @@
 
-
-/ - @post_texts.each do |post_text|
 .contents__container
   .contents__container__top
     .contents__container__top__icon
@@ -36,7 +34,7 @@
         %ul
           %li
             #function_like
-              = render partial: "post_texts/like", locals: { post_text: post_text, like: @like }
+              = render partial: "post_texts/like", locals: { post_text: post_text, like: like }
           %li
             .btn-group
               %button.btn.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}= fa_icon ("arrow-right 2x")
@@ -64,4 +62,3 @@
             .dropdown-item
             - if user_signed_in? && current_user.id == post_text.user_id
               = link_to '削除', "/post_texts/#{post_text.id}", method: :delete
-        /
