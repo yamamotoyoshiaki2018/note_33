@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
 
-  root 'post_texts#index'
+  root 'notes#index'
   resources :notes, only: [:index]
   resources :post_texts, only: [:index, :new, :create, :destroy, :show, :edit, :update], concerns: :commentable
   #  do
