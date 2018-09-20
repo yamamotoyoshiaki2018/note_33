@@ -42,7 +42,7 @@ class PostTextsController < ApplicationController
     if post_text.user_id == current_user.id
       post_text.destroy
     end
-    redirect_to post_texts_path
+    redirect_to root_path
   end
 
   def edit
@@ -54,7 +54,7 @@ class PostTextsController < ApplicationController
     if post_text.user_id == current_user.id
       post_text.update(note_params)
     end
-    redirect_to post_texts_path
+    redirect_to root_path
   end
 
   private

@@ -33,7 +33,7 @@ class PostImagesController < ApplicationController
       Note.find_by(post_image_id: post_image.id).delete
       post_image.destroy
     end
-    redirect_to post_images_path
+    redirect_to root_path
   end
 
   def show
@@ -54,7 +54,7 @@ class PostImagesController < ApplicationController
     if post_image.user_id == current_user.id
       post_image.update(image_params)
     end
-    redirect_to post_images_path
+    redirect_to root_path
   end
 
 
