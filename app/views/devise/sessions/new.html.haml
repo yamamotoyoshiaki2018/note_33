@@ -1,7 +1,7 @@
 #account-page.account-page
   .account-page__inner.clearfix
     .account-page__inner-top.account-page__header
-      %h2 note
+      = image_tag "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg", alt: "note"
     .account-page__inner-bottom.user-form
       %h4 ログイン
       = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|

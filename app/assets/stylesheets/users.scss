@@ -10,6 +10,7 @@
 
     .account-page__inner-top {
       text-align: center;
+      padding-bottom: 30px;
     }
 
     .account-page__inner-bottom {
@@ -190,7 +191,7 @@ h4 {
 }
 
 .account-edit-page {
-    margin: 60px calc( (100% - 552px) / 2);
+    margin: 15px calc( (100% - 552px) / 2);
     background-color: #f7f9f9;
 
   .account-edit-page__inner {

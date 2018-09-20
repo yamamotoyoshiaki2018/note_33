@@ -1,3 +1,50 @@
+.wrapper
+  .header
+    .header__upper
+      .header__upper__logo
+        = link_to  root_path do
+          %img{:alt => "note", :src => "https://d2l930y2yx77uc.cloudfront.net/assets/renewal/logo-b84a1f9687168286cb1ca588b5aa4d761cd3f46e79d4ac36f0d331dfb1ed21ba.svg"}/
+      %ul.header__upper__lists
+        %li
+          %form.header__upper__lists__note-botton
+          / {:action => "/post_texts/new", :method => "get"}
+          %ul.nav
+            %li
+              .header__upper__lists__note-botton__submit
+                = fa_icon("edit") + "ノートを投稿"
+              %ul
+                %li
+                  = link_to "テキスト投稿", "/post_texts/new", class: "link-green"
+                %li
+                  = link_to "イメージ投稿", "/post_images/new", class: "link-green"
+
+        %li
+          .header__upper__lists__user-icon
+            %ul.nav
+              %li.header__upper__lists__user-icon__smile
+                - if current_user.avatar_image?
+                  = image_tag current_user.avatar_image
+                - else
+                  = fa_icon ("smile 3x")
+                %ul
+                  %li
+                    = link_to "マイページ", user_path(current_user),:style=>"color:white;"
+                  %li
+                    = link_to "ノート一覧", post_texts_path,:style=>"color:white;"
+                  %li
+                    = link_to "マガジン一覧", root_path,:style=>"color:white;"
+                  %li
+                    = link_to "画像一覧", post_images_path,:style=>"color:white;"
+                  %li
+                    = link_to "アカウント設定", edit_user_registration_path,:style=>"color:white;"
+                  %li
+                    = link_to "ログアウト", destroy_user_session_path,:style=>"color:#787c7b;", :method => :delete,:style=>"color:white;"
+        %li
+          = fa_icon ("search 2x")
+          = link_to "ユーザー検索", users_path, class: "link-green"
+          = fa_icon ("search 2x")
+          = link_to "タグ検索", users_path, class: "link-green"
+
 #account-edit-page.account-edit-page
   .account-edit-page__inner.clearfix
     .account-edit-page__inner-top.account-edit-page__header
