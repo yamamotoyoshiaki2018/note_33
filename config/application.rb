@@ -15,8 +15,5 @@ module Note33
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
-
-    config.assets_languages = ['ja', 'fr']
-    config.assets_plugins = ['image', 'smiley']
   end
 end
