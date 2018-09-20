@@ -10,12 +10,13 @@
           / {:action => "/post_texts/new", :method => "get"}
           %ul.nav
             %li
-              %input.header__upper__lists__note-botton__submit{:type => "button", :value => "ノートを投稿"}/
+              .header__upper__lists__note-botton__submit
+                = fa_icon("edit") + "ノートを投稿"
               %ul
                 %li
-                  = link_to "テキスト投稿", "/post_texts/new",:style=>"color:white;"
+                  = link_to "テキスト投稿", "/post_texts/new", class: "link-green"
                 %li
-                  = link_to "イメージ投稿", "/post_images/new",:style=>"color:white;"
+                  = link_to "イメージ投稿", "/post_images/new", class: "link-green"
 
         %li
           .header__upper__lists__user-icon
@@ -40,28 +41,28 @@
                     = link_to "ログアウト", destroy_user_session_path,:style=>"color:#787c7b;", :method => :delete,:style=>"color:white;"
         %li
           = fa_icon ("search 2x")
-          = link_to "ユーザー検索", users_path
+          = link_to "ユーザー検索", users_path, class: "link-green"
           = fa_icon ("search 2x")
-          = link_to "タグ検索", users_path
+          = link_to "タグ検索", users_path, class: "link-green"
 
 
     .header__lower
       .header__lower__top
         %ul.header__lower__top__lists
           %li.header__lower__top__list
-            = link_to "ホーム", root_path,:style=>"color:white;"
+            = link_to "ホーム", root_path, class: "link-green"
           %li.header__lower__top__list
-            = link_to "おすすめ", root_path,:style=>"color:white;"
+            = link_to "おすすめ", root_path, class: "link-green"
           %li.header__lower__top__list
-            = link_to "公式マガジン", root_path,:style=>"color:white;"
+            = link_to "公式マガジン", root_path, class: "link-green"
           %li.header__lower__top__list
-            = link_to "募集中", root_path,:style=>"color:white;"
+            = link_to "募集中", root_path, class: "link-green"
           %li.header__lower__top__list
-            = link_to "ピックアップ", root_path,:style=>"color:white;"
+            = link_to "ピックアップ", root_path, class: "link-green"
           %li.header__lower__top__list
-            = link_to "注目カテゴリー", root_path,:style=>"color:white;"
+            = link_to "注目カテゴリー", root_path, class: "link-green"
           %li.header__lower__top__list
-            = link_to "人気タグ", root_path,:style=>"color:white;"
+            = link_to "人気タグ", root_path, class: "link-green"
         .header__lower__top__right
           = link_to  do
             = fa_icon("question-circle 3x")
