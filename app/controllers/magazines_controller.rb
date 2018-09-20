@@ -10,7 +10,7 @@ class MagazinesController < ApplicationController
   end
 
   def show
-    @magazine = Magazine.find(params[:id]).order("updated_at DESC")
+    @magazine = Magazine.find(params[:id])
   end
 
   def edit
@@ -34,6 +34,13 @@ class MagazinesController < ApplicationController
       redirect_to magazines_user_path(current_user), notice: 'マガジンを作成しました'
     else
       render :new
+    end
+  end
+
+  def destroy
+    magazine = Magazine.find(params[:id])
+    if magazine.destroy
+      redirect_to magazines_user_path(current_user), notice: 'マガジンを削除しました'
     end
   end
 
