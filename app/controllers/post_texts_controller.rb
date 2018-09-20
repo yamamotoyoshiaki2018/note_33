@@ -40,6 +40,7 @@ class PostTextsController < ApplicationController
   def destroy
     post_text = PostText.find(params[:id])
     if post_text.user_id == current_user.id
+      Note.find_by(post_text_id: post_text.id).delete
       post_text.destroy
     end
     redirect_to root_path
